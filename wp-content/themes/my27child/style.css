@@ -10,6 +10,10 @@
  
 /* Add Custom CSS after this line */
 
+.wp-block-code {
+	color: #E1E1E1;
+}
+
 /* Demo Johnson Box code courtesy of: http://hyperlinkcode.com/blog/html-johnson-box/ */
 
 .site-description { 
