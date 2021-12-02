@@ -19,6 +19,9 @@ wp-content/plugins/*
 wp-content/themes/*
 !wp-content/themes/my27child
 !wp-content/themes/_s
+!wp-content/themes/bathe-master
+!wp-content/themes/blockbase-child
+!wp-content/themes/wordpress-webpack-starter-master
 
 # ignore node dependency directories
 node_modules/
