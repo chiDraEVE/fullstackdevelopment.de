@@ -21,7 +21,7 @@ wp-content/themes/*
 !wp-content/themes/_s
 !wp-content/themes/bathe-master
 !wp-content/themes/blockbase-child
-!wp-content/themes/wordpress-webpack-starter-master
+!wp-content/themes/twentytwentytwo-child
 
 # ignore node dependency directories
 node_modules/
