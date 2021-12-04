@@ -10,10 +10,11 @@ wp-content/*
 
 !wp-content/mu-plugins/
 wp-content/mu-plugins/*
+!wp-content/mu-plugins/fullstackdevelopment-post-types.php
 
 !wp-content/plugins/
 wp-content/plugins/*
-#!wp-content/plugins/our-first-unique-plugin
+!wp-content/plugins/myplugin
 
 !wp-content/themes/
 wp-content/themes/*
@@ -22,6 +23,7 @@ wp-content/themes/*
 !wp-content/themes/bathe-master
 !wp-content/themes/blockbase-child
 !wp-content/themes/twentytwentytwo-child
+!wp-content/themes/mytheme
 
 # ignore node dependency directories
 node_modules/
