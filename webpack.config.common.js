@@ -1,12 +1,13 @@
-const path = require( 'path' );
+const path = require("path")
 
 module.exports = {
 	entry: {
-		index: './src/index.js',
+		index: "./js/index.js",
+		dark_mode: "./js/dark-mode.js"
 	},
 	output: {
-		filename: '[name].js',
-		path: path.resolve( __dirname, 'dist' ),
-		clean: true,
-	},
-};
+		filename: "[name].js",
+		path: path.resolve(__dirname, "assets"),
+		clean: true
+	}
+}

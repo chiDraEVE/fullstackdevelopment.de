@@ -1,4 +1,5 @@
 const { merge } = require("webpack-merge")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const common = require("./webpack.config.common")
 const path = require("path")
 
@@ -7,7 +8,7 @@ module.exports = merge(common, {
 	devtool: "inline-source-map",
 	devServer: {
 		watchFiles: ["./**/*.php", "!./functions.php"],
-		static: "./dist",
+		static: "./assets",
 		hot: true,
 		headers: {
 			"Access-Control-Allow-Origin": "*"
