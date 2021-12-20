@@ -7,6 +7,12 @@ module.exports = merge(common, {
 	mode: "development",
 	devtool: "inline-source-map",
 	devServer: {
+		allowedHosts: [
+			"wp-unit.local",
+			"fullstackdevelopment.local",
+			"clubitsolutions.local",
+			"http://blog.clubitsolutions.local"
+		],
 		watchFiles: ["./**/*.php", "!./functions.php"],
 		static: "./assets",
 		hot: true,
