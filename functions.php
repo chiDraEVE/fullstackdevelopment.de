@@ -1,7 +1,7 @@
 <?php
 	function clubitsolutions_scripts(){
-		if ( strstr($_SERVER['SERVER_NAME'], 'localhost') || strstr($_SERVER['SERVER_NAME'], '.local')) {
-			wp_enqueue_script( 'clubitsolutions-js', 'http://localhost:8080/index.js', array(),
+		if ( strstr($_SERVER['SERVER_NAME'], '.local')) {
+			wp_enqueue_script( 'clubitsolutions-js', 'http://127.0.0.1:8080/index.js', array(),
 				wp_get_theme()->get
 				( 'Version' ) );
 		}

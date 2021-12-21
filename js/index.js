@@ -4,9 +4,7 @@ import axios from "axios"
 
 async function getTitle() {
 	try {
-		const res = await axios.get(
-			"http://localhost/wp-unit-test/index.php/wp-json/"
-		)
+		const res = await axios.get("http://wp-unit.local/wp-json/")
 		// const data = await JSON.parse(res);
 		console.log(res.data.name)
 	} catch (e) {
