@@ -24,6 +24,7 @@ wp-content/themes/*
 !wp-content/themes/blockbase-child
 !wp-content/themes/twentytwentytwo-child
 !wp-content/themes/mytheme
+!wp-content/themes/clubitsolutions-child_theme
 
 # ignore node dependency directories
 node_modules/
