@@ -9,8 +9,8 @@
 wp-content/*
 #!wp-content/mu-plugins/
 #!wp-content/plugins/
-#!wp-content/themes/
-#wp-content/themes/*
+!wp-content/themes/
+wp-content/themes/*
 !wp-content/themes/twentytwentyone-child
 !wp-content/themes/clubitsolutions-child_theme
 
