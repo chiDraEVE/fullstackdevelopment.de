@@ -8,7 +8,8 @@
 		else {
 			wp_enqueue_style('clubitsolutions-style', get_theme_file_uri() . '/assets/720.438d9c78a5e7a300516e.css', array(),
 				wp_get_theme()->get('Version'));
-			wp_enqueue_style('clubitsolutions-darkmode', get_theme_file_uri() . '/assets/422.7e8f94726a71640ab5c5.css', array(),
+			wp_enqueue_style('clubitsolutions-dark_mode', get_theme_file_uri() . '/assets/422.7e8f94726a71640ab5c5.css',
+				array(),
 				wp_get_theme()->get('Version'));
 			wp_enqueue_script( 'clubitsolutions-js', get_theme_file_uri() . '/assets/index.js', array(),
 				wp_get_theme()->get
