@@ -12,6 +12,7 @@ wp-content/*
 #!wp-content/themes/
 #wp-content/themes/*
 !wp-content/themes/twentytwentyone-child
+!wp-content/themes/clubitsolutions-child_theme
 
 # ignore these plugins
 #wp-content/plugins/hello.php
