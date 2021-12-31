@@ -11,6 +11,7 @@ wp-content/*
 !wp-content/mu-plugins/
 wp-content/mu-plugins/*
 !wp-content/mu-plugins/fullstackdevelopment-post-types.php
+!wp-content/mu-plugins/university-post-types.php
 
 !wp-content/plugins/
 wp-content/plugins/*
