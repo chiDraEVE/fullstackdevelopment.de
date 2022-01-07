@@ -19,11 +19,16 @@
 			)
 		);
 		register_post_type('course', $args);
+		
+		$args['label'] = 'project';
+		$args['rewrite'] = array('slug' => 'project');
+		
+		register_post_type( 'project', $args );
 	}
 	
 	add_action('init', 'fullstackdevelopment_create_udemy_course_taxonomy');
 	function fullstackdevelopment_create_udemy_course_taxonomy() {
-		register_taxonomy( 'udemy-course', array( 'page', 'post', 'course' ), array(
+		register_taxonomy( 'udemy-course', array( 'page', 'post', 'course', 'project' ), array(
 			'hierarchical' => false,
 			'label' => 'udemy-course',
 			'show_ui' => true,
