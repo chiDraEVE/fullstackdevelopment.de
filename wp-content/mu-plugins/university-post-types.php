@@ -17,7 +17,8 @@ function university_post_types() {
       'all_items' => 'All Campuses',
       'singular_name' => 'Campus'
     ),
-    'menu_icon' => 'dashicons-location-alt'
+    'menu_icon' => 'dashicons-location-alt',
+	  'menu_position' => 104
   ));
   
   // Event Post Type
@@ -36,7 +37,8 @@ function university_post_types() {
       'all_items' => 'All Events',
       'singular_name' => 'Event'
     ),
-    'menu_icon' => 'dashicons-calendar'
+    'menu_icon' => 'dashicons-calendar',
+    'menu_position' => 103
   ));
 
   // Program Post Type
@@ -53,7 +55,8 @@ function university_post_types() {
       'all_items' => 'All Programs',
       'singular_name' => 'Program'
     ),
-    'menu_icon' => 'dashicons-awards'
+    'menu_icon' => 'dashicons-awards',
+    'menu_position' => 101
   ));
 
   // Professor Post Type
@@ -68,7 +71,8 @@ function university_post_types() {
       'all_items' => 'All Professors',
       'singular_name' => 'Professor'
     ),
-    'menu_icon' => 'dashicons-welcome-learn-more'
+    'menu_icon' => 'dashicons-welcome-learn-more',
+    'menu_position' => 102
   ));
 
   // Note Post Type
@@ -86,7 +90,8 @@ function university_post_types() {
       'all_items' => 'All Notes',
       'singular_name' => 'Note'
     ),
-    'menu_icon' => 'dashicons-welcome-write-blog'
+    'menu_icon' => 'dashicons-welcome-write-blog',
+    'menu_position' => 105
   ));
 
   // Like Post Type
@@ -101,7 +106,8 @@ function university_post_types() {
       'all_items' => 'All Likes',
       'singular_name' => 'Like'
     ),
-    'menu_icon' => 'dashicons-heart'
+    'menu_icon' => 'dashicons-heart',
+    'menu_position' => 106
   ));
 }
 
