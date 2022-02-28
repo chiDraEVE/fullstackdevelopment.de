@@ -30,6 +30,10 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	
 	if ( get_post_type() == 'project') {
 		if ( get_post_field( 'post_name', get_post()) == 'nexter') {
+			
+			wp_enqueue_style('josefin-sans', '//fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400');
+			wp_enqueue_style('nunito', '//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;1,400');
+			
 			if (strstr($_SERVER['SERVER_NAME'], '.local')) {
 				wp_enqueue_script( 'clubitsolutions-js', 'http://localhost:8080/nexter.js', array(),
 					wp_get_theme()->get
