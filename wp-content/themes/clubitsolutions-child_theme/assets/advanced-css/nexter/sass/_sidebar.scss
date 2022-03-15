@@ -2,4 +2,30 @@
   background-color: $color-primary-dark;
   grid-column: sidebar-start / sidebar-end;
   grid-row: 1 / -1;
+
+  display: flex;
+  justify-content: center;
+}
+
+.nav-btn {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin-top: remcalc(4);
+
+  background-color: #fff;
+  height: 2px;
+  width: remcalc(4.5);
+
+  &::before,
+  &::after {
+    background-color: #fff;
+    height: 2px;
+    width: remcalc(4.5);
+    content: "";
+    display: block;
+  }
+
+  &::before { transform: translateY(remcalc(-1.5))}
+  &::after { transform: translateY(remcalc(1.5))}
 }
