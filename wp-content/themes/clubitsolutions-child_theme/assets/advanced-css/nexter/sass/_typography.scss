@@ -34,7 +34,6 @@
 
 .heading-4 {
   @extend %heading;
-  //font-size: 1.9rem;
   font-size: remcalc(1.9);
 
   &--light {
@@ -74,4 +73,8 @@
 }
 .mb-hg {
   margin-bottom: remcalc(8);
+}
+
+#primary p {
+  font-size: remcalc(1);
 }
