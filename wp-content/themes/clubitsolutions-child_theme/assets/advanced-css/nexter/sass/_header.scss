@@ -8,10 +8,18 @@
   padding-top: remcalc(4);
 
   display: grid;
-  grid-template-rows: 1fr min-content remcalc(6) 1fr;
-  grid-template-columns: max-content;
+  grid-template-rows: 1fr min-content minmax(remcalc(6), min-content) 1fr;
+  grid-template-columns: minmax(min-content, max-content);
   grid-row-gap: remcalc(1.5);
   justify-content: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: remcalc(5);
+  }
 
   &__logo {
     height: remcalc(3);
@@ -21,10 +29,6 @@
   p {
     align-self: start;
     justify-self: start;
-  }
-
-  &__btn {
-
   }
 
   &__seenon-text {
@@ -49,9 +53,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-column-gap: remcalc(3);
+    align-items: center;
 
     img {
-      height: remcalc(2.5);
+      max-height: remcalc(2.5);
+      max-width: 100%;
       filter: brightness(70%);
     }
 

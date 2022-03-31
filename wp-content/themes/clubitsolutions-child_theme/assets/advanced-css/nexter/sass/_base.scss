@@ -14,8 +14,14 @@ $color-grey-dark-2: #6D5D4B;
 $font-primary: 'Nunito', sans-serif;
 $font-display: 'Josefin Sans', sans-serif;
 
-@function remcalc($val) {
-  @return $val * 0.625rem;
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 75em;    // 1200px
+$bp-large: 62.5em;    // 1000px
+$bp-medium: 50em;     // 800px;
+$bp-small: 37.5em;    // 600px;
+
+@function remcalc($val, $size: 0.625rem) {
+  @return $val * $size;
 }
 
 *,
@@ -44,4 +50,13 @@ main#primary.site-main {
   grid-template-rows: 80vh min-content 40vw repeat(3, min-content);
   grid-template-columns: [sidebar-start] remcalc(8) [sidebar-end full-start] minmax(remcalc(6), 1fr) [center-start] repeat(8, [col-start] minmax(min-content, remcalc(14)) [col-end]) [center-end] minmax(remcalc(6), 1fr) [full-end];
 
+  @media only screen and (max-width: $bp-large) {
+    grid-template-rows: remcalc(6) 80vh min-content 40vw repeat(3, min-content);
+    grid-template-columns: [full-start] minmax(remcalc(6), 1fr) [center-start] repeat(8, [col-start] minmax(min-content, remcalc(14)) [col-end]) [center-end] minmax(remcalc(6), 1fr) [full-end];
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-rows: remcalc(6) calc(100vh - 60px);
+
+  }
 }
