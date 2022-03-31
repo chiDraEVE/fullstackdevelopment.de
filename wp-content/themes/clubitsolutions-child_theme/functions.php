@@ -14,8 +14,12 @@ add_action( 'wp_enqueue_scripts', 'clubitsolutions_theme_parent_theme_enqueue_st
  */
 function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	wp_enqueue_style( 'clubitsolutions-theme-style', get_template_directory_uri() . '/style.css' );
-	wp_enqueue_style( 'clubitsolutions-child_theme-style',
+	wp_enqueue_style( 'clubitsolutions-child_theme-meta-information',
 		get_stylesheet_directory_uri() . '/style.css',
+		array( 'clubitsolutions-theme-style' )
+	);
+	wp_enqueue_style( 'clubitsolutions-child_theme-style',
+		get_stylesheet_directory_uri() . '/dist/index.css',
 		array( 'clubitsolutions-theme-style' )
 	);
 	
