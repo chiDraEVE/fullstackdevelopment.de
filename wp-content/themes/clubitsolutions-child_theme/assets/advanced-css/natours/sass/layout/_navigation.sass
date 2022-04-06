@@ -4,8 +4,8 @@
 
   &__button
     background-color: $color-white
-    height: 7rem
-    width: 7rem
+    height: remcalc(7)
+    width: remcalc(7)
     position: fixed
     top: remcalc(6)
     right: remcalc(6)
@@ -14,6 +14,9 @@
     box-shadow: 0 remcalc(1) remcalc(3) rgba($color-black, .1)
     text-align: center
     cursor: pointer
+
+    & > br
+      display: none
 
   &__background
     height: remcalc(6)
@@ -109,13 +112,13 @@
   &__button:hover &__icon::after
     top: remcalc(1)
 
-  &__checkbox:checked + &__button &__icon
+  &__checkbox:checked ~ &__button &__icon
     background-color: transparent
 
-  &__checkbox:checked + &__button &__icon::before
+  &__checkbox:checked ~ &__button &__icon::before
     top: 0
     transform: rotate(135deg)
 
-  &__checkbox:checked + &__button &__icon::after
+  &__checkbox:checked ~ &__button &__icon::after
     top: 0
     transform: rotate(-135deg)
