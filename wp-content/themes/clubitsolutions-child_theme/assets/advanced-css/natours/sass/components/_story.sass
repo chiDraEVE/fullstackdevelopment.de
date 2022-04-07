@@ -1,4 +1,7 @@
 .story
+  & > p
+    display: none
+
   width: 75%
   margin: 0 auto
   box-shadow: 0 remcalc(3) remcalc(6) rgba($color-black, .1)
@@ -7,28 +10,51 @@
   padding: remcalc(6) remcalc(6) remcalc(6) remcalc(9)
   font-size: $default-font-size
   transform: skewX(-12deg)
-  z-index: 10
+
+  @include respond(tab-port)
+    width: 100%
+    padding: remcalc(4) remcalc(4) remcalc(4) remcalc(7)
+
+  @include respond(phone)
+    transform: skewX(0)
 
   &__shape
     width: remcalc(15)
     height: remcalc(15)
     float: left
-    -webkit-shape-outside: circle(50% at 50% 50%)
-    shape-outside: circle(50% at 50% 50%)
-    -webkit-clip-path: circle(50% at 50% 50%)
-    clip-path: circle(50% at 50% 50%)
     transform: translateX(remcalc(-3)) skew(12deg)
     position: relative
+    overflow: hidden
+    border-radius: 50%
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0))
+      -webkit-clip-path: circle(50% at 50% 50%)
+      clip-path: circle(50% at 50% 50%)
+      -webkit-shape-outside: circle(50% at 50% 50%)
+      shape-outside: circle(50% at 50% 50%)
+      border-radius: 0
+
+
+    @include respond(phone)
+      transform: translateX(remcalc(-3)) skewX(0)
+
 
   &__img
     height: 100%
     transform: translateX(remcalc(-4)) scale(1.4)
     backface-visibility: hidden
     transition: all .5s
+    max-width: min-content
 
 
   &__text
     transform: skewX(12deg)
+
+    @include respond(phone)
+      transform: skewX(0)
+
+    & > p:last-child
+      display: none
 
   &__caption
     position: absolute
