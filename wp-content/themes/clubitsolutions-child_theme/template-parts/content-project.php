@@ -1,5 +1,4 @@
 <?php
-
 	the_content();
 	
 	
