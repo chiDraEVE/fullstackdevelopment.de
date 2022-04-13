@@ -16,7 +16,11 @@
 			while ( have_posts() ) :
 				the_post();
 				
-				get_template_part( 'template-parts/content', get_post_type() );
+				switch ( get_post_field( 'post_name' ) ) {
+					case 'trillo': require_once( 'assets/advanced-css/trillo/trillo.php' );
+					default: get_template_part( 'template-parts/content', get_post_type() );
+				}
+				
 				
 				the_post_navigation(
 					array(

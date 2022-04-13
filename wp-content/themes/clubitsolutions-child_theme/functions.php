@@ -37,15 +37,13 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	
 	if ( get_post_type() == 'project') {
 		$currentlyDeveloping = array(
-			'natours' => true,
+			'natours' => false,
 			'nexter' => false,
+			'trillo' => true
 		);
 		
 		if ( get_post_field( 'post_name', get_post()) == 'nexter') {
-			
-//			wp_enqueue_style('josefin-sans', '//fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;1,400');
 			wp_enqueue_style('josefin-sans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/josefin-sans.css');
-//			wp_enqueue_style('nunito', '//fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;1,400');
 			wp_enqueue_style('nunito-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/nunito.css');
 			
 			if (strstr($_SERVER['SERVER_NAME'], '.local') && $currentlyDeveloping['nexter']) {
@@ -58,12 +56,8 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		}
 		
 		if ( get_post_field( 'post_name', get_post()) == 'natours') {
-			
-//			wp_enqueue_style('lato', '//fonts.googleapis.com/css?family=Lato:100,300,400,700,900');
 			wp_enqueue_style('lato-font', get_stylesheet_directory_uri() . '/assets/advanced-css/natours/css/lato.css');
 			wp_enqueue_style('linea-icon-font', get_stylesheet_directory_uri() . '/assets/advanced-css/natours/icon-font.css');
-			wp_enqueue_style('roboto-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto.css');
-			
 			
 			if (strstr($_SERVER['SERVER_NAME'], '.local') && $currentlyDeveloping['natours']) {
 				wp_enqueue_script( 'natours-js', 'http://localhost:8080/natours.js', array(),
@@ -71,6 +65,18 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 					( 'Version' ) );
 			} else {
 				wp_enqueue_style( 'natours-style', get_stylesheet_directory_uri() . '/assets/advanced-css/dist/natours.css' );
+			}
+		}
+		
+		if ( get_post_field( 'post_name', get_post()) == 'trillo') {
+			wp_enqueue_style('opensans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/trillo/open-sans.css');
+			
+			if (strstr($_SERVER['SERVER_NAME'], '.local') && $currentlyDeveloping['trillo']) {
+				wp_enqueue_script( 'trillo-js', 'http://localhost:8080/trillo.js', array(),
+					wp_get_theme()->get
+					( 'Version' ) );
+			} else {
+				wp_enqueue_style( 'trillo-style', get_stylesheet_directory_uri() . '/assets/advanced-css/dist/trillo.css' );
 			}
 		}
 	}
