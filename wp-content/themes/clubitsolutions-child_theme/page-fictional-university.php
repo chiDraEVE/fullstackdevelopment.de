@@ -10,7 +10,7 @@
 		<h1 class="headline headline--large">Welcome!</h1>
 		<h2 class="headline headline--medium">We think you&rsquo;ll like it here.</h2>
 		<h3 class="headline headline--small">Why don&rsquo;t you check out the <strong>major</strong> you&rsquo;re interested in?</h3>
-		<a href="#" class="btn btn--large btn--blue">Find Your Major</a>
+		<a href="<?php echo get_post_type_archive_link('program'); ?>" class="btn btn--large btn--blue">Find Your Major</a>
 	</div>
 </div>
 
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 
-			<p class="t-center no-margin"><a href="#" class="btn btn--blue">View All Events</a></p>
+			<p class="t-center no-margin"><a href="<?php echo get_post_type_archive_link('event'); ?>" class="btn btn--blue">View All Events</a></p>
 
 		</div>
 	</div>
@@ -111,4 +111,7 @@
 		</div>
 	</div>
 </div>
-<?php get_footer(); ?>
+<?php
+	
+	get_footer();
+	?>

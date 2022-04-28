@@ -1,15 +1,7 @@
 <?php
-
-  get_header();
-
-  while(have_posts()) {
-    the_post();
-    pageBanner();
-     ?>
-    
-    
-
-    <div class="container container--narrow page-section">
+	pageBanner();
+?>
+	<div class="container container--narrow page-section">
     
     <?php
       $theParent = wp_get_post_parent_id(get_the_ID());
@@ -19,8 +11,6 @@
     </div>
       <?php }
     ?>
-
-    
     
     <?php 
     $testArray = get_pages(array(
@@ -50,16 +40,6 @@
     
 
     <div class="generic-content">
-      <?php
-	      the_content();
-	     
-				?>
+      <?php the_content(); ?>
     </div>
-		Dies ist eine Seite
   </div>
-    
-  <?php }
-	
-  get_footer();
-
-?>
