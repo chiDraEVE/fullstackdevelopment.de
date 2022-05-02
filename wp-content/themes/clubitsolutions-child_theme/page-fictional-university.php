@@ -1,6 +1,5 @@
 <?php
 	get_header();
-	require get_stylesheet_directory() . '/inc/fictional-university/header.php';
 ?>
 
 <div class="page-banner">
