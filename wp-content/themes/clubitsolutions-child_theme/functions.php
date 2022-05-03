@@ -26,8 +26,9 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	);
 	
 	// Loading assets for Fictional-University-Project
-	
-	if ( isFictionalUniversity() ) {
+	global $isFictionalUniversity;
+	isFictionalUniversity();
+	if ( $isFictionalUniversity ) {
 		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/styles.css' );
 		wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/assets/fictional-university/scripts.js', array('jquery'), '1.0', true);
 		wp_enqueue_style('roboto-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto.css');
