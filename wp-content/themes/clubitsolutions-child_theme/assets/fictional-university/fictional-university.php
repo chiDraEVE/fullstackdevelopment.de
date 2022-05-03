@@ -29,9 +29,11 @@
 		</div>
 	<?php }
 	
-	function isFictionalUniversity(): bool {
-		$relations = get_field('relations');
+	function isFictionalUniversity(): void {
+		global $isFictionalUniversity;
 		$isFictionalUniversity = false;
+		
+		$relations = get_field('relations');
 		$postType = get_post_type();
 		$postTypesOfFictionalUniversity = array("program", "professor", "program", "event", "campus");
 		if ($relations && !is_home()) {
@@ -48,7 +50,7 @@
 		&& !is_home())
 			$isFictionalUniversity = true;
 
-		return $isFictionalUniversity;
+//		return $isFictionalUniversity;
 	}
 
 	function showUniversityHeader() {
@@ -91,6 +93,8 @@
 	
 	function showUniversityFooter() {
 		?>
+		<footer class="site-footer">
+
 		<div class="site-footer__inner container container--narrow">
 
 			<div class="group">
@@ -138,8 +142,7 @@
 					</nav>
 				</div>
 			</div>
-
-		</div>
+		</footer>
 	<?php }
 	
 function university_features() {
