@@ -7,7 +7,9 @@
     "build": "webpack --mode=production --config ./webpack.config.prod.js",
     "start": "webpack serve --mode=development --config ./webpack.config.dev.js",
     "build:advanced_css": "webpack --mode=production --config ./assets/advanced-css/webpack.config.prod.js",
-    "start:advanced_css": "webpack serve --mode=development --config ./assets/advanced-css/webpack.config.dev.js"
+    "start:advanced_css": "webpack serve --mode=development --config ./assets/advanced-css/webpack.config.dev.js",
+    "build:fictional_university": "webpack --mode=production --config ./assets/fictional-university/webpack.config.prod.js",
+    "start:fictional_university": "webpack serve --mode=development --config ./assets/fictional-university/webpack.config.dev.js"
   },
   "repository": {
     "type": "git",

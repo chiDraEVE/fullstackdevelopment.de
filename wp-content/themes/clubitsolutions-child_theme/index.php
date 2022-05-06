@@ -1,7 +1,8 @@
 <?php
 
 get_header();
-if (isFictionalUniversity()){
+global $isFictionalUniversity;
+if ($isFictionalUniversity){
 	pageBanner(array(
 		'title' => 'Welcome to our blog!',
 		'subtitle' => 'Keep up with our latest news.'

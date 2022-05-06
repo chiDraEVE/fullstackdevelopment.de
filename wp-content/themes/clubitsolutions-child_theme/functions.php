@@ -20,16 +20,27 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		get_stylesheet_directory_uri() . '/style.css',
 		array( 'clubitsolutions-theme-style' )
 	);
-	wp_enqueue_style( 'clubitsolutions-child_theme-style',
-		get_stylesheet_directory_uri() . '/dist/index.css',
-		array( 'clubitsolutions-theme-style' )
-	);
+	if (strstr($_SERVER['SERVER_NAME'], '.local') && true) {
+		wp_enqueue_script(
+			'index-js',
+			'http://localhost:8082/index.js',
+			array(),
+			wp_get_theme()->get
+			( 'Version' )
+		);
+	} else {
+		wp_enqueue_style(
+			'clubitsolutions-child_theme-style',
+			get_stylesheet_directory_uri() . '/dist/index.css',
+			array( 'clubitsolutions-theme-style' )
+		);
+	}
 	
 	// Loading assets for Fictional-University-Project
 	global $isFictionalUniversity;
 	isFictionalUniversity();
 	if ( $isFictionalUniversity ) {
-		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/styles.css' );
+		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
 		wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/assets/fictional-university/scripts.js', array('jquery'), '1.0', true);
 		wp_enqueue_style('roboto-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto.css');
 		wp_enqueue_style('roboto-condensed-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto-condensed.css');
@@ -37,7 +48,7 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		wp_enqueue_script('fictional-university-vendors', get_stylesheet_directory_uri() . '/assets/fictional-university/vendors-scripts.js');
 	}
 	
-	
+	// Loading assets for projects
 	if ( get_post_type() == 'project') {
 		if ( get_post_field( 'post_name', get_post()) == 'nexter') {
 			wp_enqueue_style('josefin-sans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/josefin-sans.css');
@@ -55,12 +66,17 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		}
 	}
 }
-	
+
+/*
+ * For development to load assets to webpack-dev-server for the different projects. For future projects it's
+ * important to consider the naming convention and to set the devMode-Parameter to true. Otherwise assets will be
+ * loaded from the dist-folder
+ */
 function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	if (strstr($_SERVER['SERVER_NAME'], '.local') && $devMode) {
 		wp_enqueue_script(
 			$projectName.'-js',
-			'http://localhost:8080/'.$projectName.'.js',
+			'http://localhost:8084/'.$projectName.'.js',
 			array(),
 			wp_get_theme()->get
 			( 'Version' )
