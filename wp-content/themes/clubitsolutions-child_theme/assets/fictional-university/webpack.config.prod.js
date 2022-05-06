@@ -3,29 +3,14 @@ const { merge } = require("webpack-merge");
 const common = require("./webpack.config.common");
 
 module.exports = merge(common, {
-	mode: "development",
-	devtool: "inline-source-map",
-	devServer: {
-		allowedHosts: [
-			"wp-unit.local",
-			"fullstackdevelopment.local",
-			"clubitsolutions.local",
-			"http://blog.clubitsolutions.local",
-		],
-		watchFiles: ["./**/*.php", "!./functions.php"],
-		static: "./assets",
-		port: 8084,
-		hot: true,
-		headers: {
-			"Access-Control-Allow-Origin": "*",
-		},
-	},
+	mode: "production",
 	module: {
 		rules: [
 			{
 				test: /\.s[ac]ss$/i,
 				use: [
-					{ loader: "style-loader" },
+					MiniCssExtractPlugin.loader,
+					// Translates CSS into CommonJS
 					{
 						loader: "css-loader",
 						options: { importLoaders: 1 },

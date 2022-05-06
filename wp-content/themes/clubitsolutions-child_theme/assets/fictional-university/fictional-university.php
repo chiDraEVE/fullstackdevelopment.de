@@ -27,6 +27,8 @@
 				</div>
 			</div>
 		</div>
+				</div>
+
 	<?php }
 	
 	function isFictionalUniversity(): void {
@@ -55,6 +57,7 @@
 
 	function showUniversityHeader() {
 		?>
+		<div class="fictional-university__header">
 		<header class="site-header">
 		<div class="container">
 			<h1 class="school-logo-text float-left"><a href="<?php echo site_url('/fictional-university') ?>"><strong>Fictional</strong> University</a></h1>
@@ -88,12 +91,12 @@
 			</div>
 		</div>
 		</header>
-<?php
+		<?php
 	}
 	
 	function showUniversityFooter() {
 		?>
-		<footer class="site-footer">
+		<footer class="fictional-university__site-footer">
 
 		<div class="site-footer__inner container container--narrow">
 

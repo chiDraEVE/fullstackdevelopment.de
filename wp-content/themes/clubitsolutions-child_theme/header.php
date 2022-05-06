@@ -41,9 +41,10 @@
 			  ?>
 		  </nav><!-- #site-navigation -->
 	  </header><!-- #masthead -->
-  <?php
-	  global $isFictionalUniversity;
-		if ($isFictionalUniversity)
-			showUniversityHeader();
-	?>
-  
+	  <main id="primary">
+	  <?php
+		  global $isFictionalUniversity;
+		  if ($isFictionalUniversity)
+			  showUniversityHeader();
+	  ?>
+			 

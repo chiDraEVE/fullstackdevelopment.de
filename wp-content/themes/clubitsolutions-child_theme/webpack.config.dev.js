@@ -14,6 +14,7 @@ module.exports = merge(common, {
 		],
 		watchFiles: ["./**/*.php", "!./functions.php"],
 		static: "./assets",
+		port: 8082,
 		hot: true,
 		headers: {
 			"Access-Control-Allow-Origin": "*",
