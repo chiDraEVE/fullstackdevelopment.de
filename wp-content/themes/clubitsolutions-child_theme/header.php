@@ -10,6 +10,7 @@
 	  <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'clubitsolutions-theme' ); ?></a>
 
 	  <header id="masthead" class="site-header">
+		  <?php echo  get_the_post_thumbnail()?>
 		  <div class="site-branding">
 			  <?php
 				  the_custom_logo();
