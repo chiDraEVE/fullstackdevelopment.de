@@ -42,7 +42,6 @@
 			  ?>
 		  </nav><!-- #site-navigation -->
 	  </header><!-- #masthead -->
-	  <main id="primary">
 	  <?php
 		  global $isFictionalUniversity;
 		  if ($isFictionalUniversity)

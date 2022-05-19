@@ -88,3 +88,16 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 		);
 	}
 }
+	/*
+	 * Make sure you are logged in, look at the very bottom of your website
+	 * and you will see the path to the WordPress template file being loaded
+	 * on the current page
+	 */
+	function clubitsolutions_which_template_is_loaded() {
+		if ( is_super_admin() ) {
+			global $template;
+			print_r( $template );
+		}
+	}
+	
+	add_action( 'wp_footer', 'clubitsolutions_which_template_is_loaded' );

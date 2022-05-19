@@ -203,6 +203,6 @@
 				</button>
 			</div>
 		
-		</main>
+		</main><!--.hotel-view-->
 	</div>
 </div>
