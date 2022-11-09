@@ -1,6 +1,6 @@
 <?php
 	/**
-	 * The template for displaying all single posts
+	 * The template for displaying all single projects
 	 *
 	 * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
 	 *
@@ -8,16 +8,21 @@
 	 */
 	
 	get_header();
+	$projectName = get_post_field('post_name');
 ?>
 	
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main <?php echo $projectName ?>">
 		
 		<?php
 			while ( have_posts() ) :
 				the_post();
 				
-				switch ( get_post_field( 'post_name' ) ) {
-					case 'trillo': require_once( 'assets/advanced-css/trillo/trillo.php' );
+				/**
+				 * check for specifi projekcts like the example trillo. I didn't put the structure in the editor but will
+				 * load it from a file and ignore content from editor
+				 */
+				switch ( $projectName ) {
+					case 'trillo': require_once( 'assets/advanced-css/trillo/trillo.php' ); break;
 					default: get_template_part( 'template-parts/content', get_post_type() );
 				}
 				
