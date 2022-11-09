@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php wp_head(); ?>
   </head>
-  <body <?php body_class(); ?>>
+  <body <?php
+	  global $isFictionalUniversity;
+	  $classList = array();
+		if ($isFictionalUniversity)
+			$classList[] = 'fictional-university';
+	  body_class($classList);
+		?>>
   <div id="page" class="site">
 	  <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'clubitsolutions-theme' ); ?></a>
 
@@ -43,7 +49,6 @@
 		  </nav><!-- #site-navigation -->
 	  </header><!-- #masthead -->
 	  <?php
-		  global $isFictionalUniversity;
 		  if ($isFictionalUniversity)
 			  showUniversityHeader();
 	  ?>
