@@ -20,7 +20,7 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		get_stylesheet_directory_uri() . '/style.css',
 		array( 'clubitsolutions-theme-style' )
 	);
-	if (strstr($_SERVER['SERVER_NAME'], '.local') && true) {
+	if (strstr($_SERVER['SERVER_NAME'], '.local') && false) {
 		wp_enqueue_script(
 			'index-js',
 			'http://localhost:8082/index.js',
