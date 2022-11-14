@@ -20,7 +20,6 @@ wp-content/plugins/*
 !wp-content/themes/
 wp-content/themes/*
 !wp-content/themes/my27child
-!wp-content/themes/_s
 !wp-content/themes/fictional-block-theme
 !wp-content/themes/clubitsolutions-child_theme
 
