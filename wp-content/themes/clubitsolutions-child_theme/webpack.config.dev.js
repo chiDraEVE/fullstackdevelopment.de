@@ -12,7 +12,7 @@ module.exports = merge(common, {
 			"clubitsolutions.local",
 			"http://blog.clubitsolutions.local",
 		],
-		watchFiles: ["./**/*.php", "!./functions.php"],
+		watchFiles: ["./**/*.php", "./**/*.html", "!./functions.php"],
 		static: "./assets",
 		port: 8082,
 		hot: true,

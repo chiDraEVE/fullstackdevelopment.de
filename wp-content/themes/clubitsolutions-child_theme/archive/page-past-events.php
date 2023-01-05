@@ -29,7 +29,7 @@ pageBanner(array(
 
   while($pastEvents->have_posts()) {
     $pastEvents->the_post(); 
-    get_template_part('template-parts/content-event');
+    get_template_part( 'template-parts/content-event.php' );
   }
   echo paginate_links(array(
     'total' => $pastEvents->max_num_pages
