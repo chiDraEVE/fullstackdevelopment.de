@@ -51,8 +51,14 @@
 		if ((in_array($postType, $postTypesOfFictionalUniversity) || has_category('Fictional University'))
 		&& !is_home())
 			$isFictionalUniversity = true;
-
-//		return $isFictionalUniversity;
+        
+        if (str_contains(get_the_title(), 'Fictional University'))
+            $isFictionalUniversity = true;
+        
+        if ($isFictionalUniversity) {
+            global $projectName;
+            $projectName = 'fictional-university';
+        }
 	}
 
 	function showUniversityHeader() {

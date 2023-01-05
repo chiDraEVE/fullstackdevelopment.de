@@ -20,7 +20,7 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		get_stylesheet_directory_uri() . '/style.css',
 		array( 'clubitsolutions-theme-style' )
 	);
-	if (strstr($_SERVER['SERVER_NAME'], '.local') && false) {
+	if (strstr($_SERVER['SERVER_NAME'], '.local') && true) {
 		wp_enqueue_script(
 			'index-js',
 			'http://localhost:8082/index.js',
@@ -50,20 +50,22 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	
 	// Loading assets for projects
 	if ( get_post_type() == 'project') {
+		global $projectName;
 		if ( get_post_field( 'post_name', get_post()) == 'nexter') {
+			$projectName = 'nexter';
 			wp_enqueue_style('josefin-sans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/josefin-sans.css');
 			wp_enqueue_style('nunito-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/nunito.css');
-			loadAssetsDependingOnDevMode('nexter', false);
 		}
 		if ( get_post_field( 'post_name', get_post()) == 'natours') {
+			$projectName = 'natours';
 			wp_enqueue_style('lato-font', get_stylesheet_directory_uri() . '/assets/advanced-css/natours/css/lato.css');
 			wp_enqueue_style('linea-icon-font', get_stylesheet_directory_uri() . '/assets/advanced-css/natours/icon-font.css');
-			loadAssetsDependingOnDevMode('natours', false);
 		}
 		if ( get_post_field( 'post_name', get_post()) == 'trillo') {
+			$projectName = 'trillo';
 			wp_enqueue_style( 'opensans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/trillo/open-sans.css' );
-			loadAssetsDependingOnDevMode( 'trillo', false );
 		}
+		loadAssetsDependingOnDevMode($projectName, false);
 	}
 }
 
@@ -96,8 +98,33 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	function clubitsolutions_which_template_is_loaded() {
 		if ( is_super_admin() ) {
 			global $template;
-			print_r( $template );
+			print_r( $template . "<br>");
+			global $isFictionalUniversity;
+			print_r( ($isFictionalUniversity) ? "fictional university global is set<br>" : "isFictionalUniversity not set<br>");
+			global $projectName;
+			print_r( ($projectName) ? "projectName is set to: $projectName <br>" : "");
 		}
+
 	}
 	
 	add_action( 'wp_footer', 'clubitsolutions_which_template_is_loaded' );
+	
+	/**
+	 * Add custom field body class(es) to the body classes.
+	 *
+	 * It accepts values from a per-page custom field, and only outputs when viewing a singular static Page.
+	 *
+	 * @param array $classes Existing body classes.
+	 * @return array Amended body classes.
+	 */
+	function custom_body_class( array $classes ) {
+		global $projectName;
+		
+		if ( $projectName ) {
+			$classes[] = $projectName;
+		}
+		
+		return $classes;
+	}
+	
+	add_filter( 'body_class', 'custom_body_class' );
