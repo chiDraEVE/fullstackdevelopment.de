@@ -128,3 +128,5 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	}
 	
 	add_filter( 'body_class', 'custom_body_class' );
+	
+	
