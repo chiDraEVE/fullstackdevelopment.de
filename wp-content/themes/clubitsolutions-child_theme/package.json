@@ -9,7 +9,8 @@
     "build:advanced_css": "webpack --mode=production --config ./assets/advanced-css/webpack.config.prod.js",
     "start:advanced_css": "webpack serve --mode=development --config ./assets/advanced-css/webpack.config.dev.js",
     "build:fictional_university": "webpack --mode=production --config ./assets/fictional-university/webpack.config.prod.js",
-    "start:fictional_university": "webpack serve --mode=development --config ./assets/fictional-university/webpack.config.dev.js"
+    "start:fictional_university": "webpack serve --mode=development --config ./assets/fictional-university/webpack.config.dev.js",
+    "start:university_blocks": "wp-scripts start blocks/fictional-university/banner.js blocks/fictional-university/genericheading.js blocks/fictional-university/genericbutton.js blocks/fictional-university/slideshow.js blocks/fictional-university/slide.js"
   },
   "repository": {
     "type": "git",
