@@ -49,7 +49,9 @@
 		  </nav><!-- #site-navigation -->
 	  </header><!-- #masthead -->
 	  <?php
-		  if ($isFictionalUniversity)
-			  showUniversityHeader();
+		  if ($isFictionalUniversity) {
+              showUniversityHeader();
+              showUniversityFooter();
+          }
 	  ?>
 			 
