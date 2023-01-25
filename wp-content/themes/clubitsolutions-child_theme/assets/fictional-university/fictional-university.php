@@ -1,39 +1,4 @@
 <?php
-	
-	function isFictionalUniversity(): void {
-		global $isFictionalUniversity;
-		$isFictionalUniversity = false;
-		
-		$relations = get_field('relations');
-		$postType = get_post_type();
-		$postTypesOfFictionalUniversity = array("program", "professor", "program", "event", "campus");
-		if ($relations && !is_home()) {
-			foreach ( $relations as $relation ) {
-				$title = get_the_title( $relation );
-				if ( str_contains( $title, 'Fictional University' )
-				     || str_contains( $title, 'Become a WordPress Developer: Unlocking Power With Code'
-				     ) ) {
-					$isFictionalUniversity = true;
-				}
-			}
-		}
-		if ((in_array($postType, $postTypesOfFictionalUniversity) || has_category('Fictional University'))
-		&& !is_home())
-			$isFictionalUniversity = true;
-        
-        if (str_contains(get_the_title(), 'Fictional University'))
-            $isFictionalUniversity = true;
-        
-        if ($isFictionalUniversity) {
-            global $projectName;
-            $projectName = 'fictional-university';
-            require get_theme_file_path('/inc/like-route.php');
-	        require get_theme_file_path('/inc/search-route.php');
-	
-        }
-	}
- 
- 
 	function university_custom_rest() {
 	  register_rest_field('post', 'authorName', array(
 	    'get_callback' => function() {return get_the_author();}
@@ -268,7 +233,8 @@
 	}
  
     class PlaceholderBlock {
-		function __construct($name) {
+		private $name;
+        function __construct($name) {
 			$this->name = $name;
 			add_action('init', [$this, 'onInit']);
 		}
@@ -311,7 +277,13 @@
 	new PlaceholderBlock("singleevent");
 
 	class JSXBlock {
-	  function __construct($name, $renderCallback = null, $data = null) {
+	  private $name;
+      /** @var mixed|null*/
+      private $data;
+      /** @var mixed|null */
+      private $renderCallback;
+      
+      function __construct($name, $renderCallback = null, $data = null) {
 	    $this->name = $name;
 			$this->data = $data;
 	    $this->renderCallback = $renderCallback;

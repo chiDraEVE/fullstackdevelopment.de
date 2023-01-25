@@ -176,9 +176,9 @@ function _asyncToGenerator(fn) {
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 !function() {
-/*!***********************************************!*\
-  !*** ./blocks/fictional-university/banner.js ***!
-  \***********************************************/
+/*!**********************************************!*\
+  !*** ./blocks/fictional-university/slide.js ***!
+  \**********************************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ "./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
@@ -201,12 +201,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__.registerBlockType)("ourblocktheme/banner", {
-  title: "Banner",
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_6__.registerBlockType)("ourblocktheme/slide", {
+  title: "Slide",
   supports: {
     align: ["full"]
   },
   attributes: {
+    themeimage: {
+      type: "string"
+    },
     align: {
       type: "string",
       default: "full"
@@ -224,10 +227,16 @@ __webpack_require__.r(__webpack_exports__);
 });
 function EditComponent(props) {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (props.attributes.themeimage) props.setAttributes({
+      imgURL: "".concat(slide.themeimagepath).concat(props.attributes.themeimage)
+    });
+    console.log(slide.themeimagepath + props.attributes.themeimage);
+  }, []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (props.attributes.imgID) {
       var go = /*#__PURE__*/function () {
         var _ref = (0,_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__["default"])( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().mark(function _callee() {
-          var response;
+          var response, imgSizes;
           return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_2___default().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -238,10 +247,18 @@ function EditComponent(props) {
                 });
               case 2:
                 response = _context.sent;
-                props.setAttributes({
-                  imgURL: response.media_details.sizes.pageBanner.source_url
+                imgSizes = response.media_details.sizes;
+                if (imgSizes.pageBanner) props.setAttributes({
+                  imgURL: imgSizes.pageBanner.source_url
+                });else if (imgSizes.full) props.setAttributes({
+                  imgURL: imgSizes.full.source_url
+                });else props.setAttributes({
+                  imgURL: response.media_details.file
                 });
-              case 4:
+                props.setAttributes({
+                  themeimage: ""
+                });
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -272,17 +289,17 @@ function EditComponent(props) {
       }, "Choose Image");
     }
   }))))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "page-banner"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "page-banner__bg-image",
+    className: "hero-slider__slide",
     style: {
       backgroundImage: "url('".concat(props.attributes.imgURL, "')")
     }
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
-    className: "page-banner__content container t-center c-white"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "hero-slider__interior container"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)("div", {
+    className: "hero-slider__overlay t-center"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InnerBlocks, {
     allowedBlocks: ["ourblocktheme/genericheading", "ourblocktheme/genericbutton"]
-  }))));
+  })))));
 }
 function SaveComponent() {
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_1__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_5__.InnerBlocks.Content, null);
@@ -290,4 +307,4 @@ function SaveComponent() {
 }();
 /******/ })()
 ;
-//# sourceMappingURL=banner.js.map
+//# sourceMappingURL=slide.js.map
