@@ -1,2 +1,2 @@
 import "./sass/main.scss";
-import "./img/sprite.svg";
+import "./img/trillo.svg";

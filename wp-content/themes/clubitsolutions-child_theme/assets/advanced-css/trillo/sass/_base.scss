@@ -54,34 +54,38 @@ $bp-smallest: 31.25em;// 500px
   box-sizing: inherit;
 }
 
-html .container{
-  //box-sizing: border-box;
-  //font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+body.trillo {
+  color: $color-primary;
 
-  @media only screen and (max-width: $bp-large) {
-    font-size: 90%;
+  .container{
+    //box-sizing: border-box;
+    //font-size: 62.5%; // 1rem = 10px, 10px/16px = 62.5%
+
+    @media only screen and (max-width: $bp-large) {
+      font-size: 90%;
+    }
   }
-}
 
-#primary {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  color: $color-grey-dark-2;
-  background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding-top: remcalc(4);
-  min-height: 100vh;
+  #primary {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    color: $color-grey-dark-2;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: remcalc(4);
+    min-height: 100vh;
 
-  @media only screen and (max-width: $bp-largest){
-    padding: remcalc(2);
+    @media only screen and (max-width: $bp-largest){
+      padding: remcalc(2);
+    }
+    @media only screen and (max-width: $bp-medium){
+      padding: remcalc(2) 0;
+    }
   }
-  @media only screen and (max-width: $bp-medium){
-    padding: remcalc(2) 0;
-  }
-}
 
-.post-navigation, #comments {
-  background-color: $color-grey-light-2;
+  .post-navigation, #comments {
+    background-color: $color-grey-light-2;
+  }
 }
