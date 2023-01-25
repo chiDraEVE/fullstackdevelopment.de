@@ -1,4 +1,4 @@
-import "../css/style.scss"
+import "../css/fictional-university-style.scss"
 
 // Our modules / classes
 import MobileMenu from "./modules/MobileMenu"
@@ -12,6 +12,6 @@ import Like from "./modules/Like"
 // const mobileMenu = new MobileMenu()
 const heroSlider = new HeroSlider()
 // const googleMap = new GoogleMap()
-const search = new Search()
+// const search = new Search()
 const myNotes = new MyNotes()
 const like = new Like()

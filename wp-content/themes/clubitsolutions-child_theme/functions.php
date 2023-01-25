@@ -43,8 +43,23 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	// Loading assets for Fictional-University-Project
 	PortfolioHelper::isFictionalUniversity();
 	if ( PortfolioHelper::getIsFictionalUniversity() ) {
-		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
-		wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.js', array('jquery'), '1.0', true);
+		if (strstr($_SERVER['SERVER_NAME'], '.local') && DEV_MODE) {
+			wp_enqueue_script(
+				'fictional-university-js',
+				'http://localhost:8082/fictionalUniversity.js',
+				array(),
+				wp_get_theme()->get
+				( 'Version' )
+			);
+		} else {
+			wp_enqueue_style(
+				'clubitsolutions-child_theme-style',
+				get_stylesheet_directory_uri() . '/dist/fictionalUniversity.css.css',
+				array( 'fictional-university-style' ));
+			wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/dist/fictionalUniversity.js', array('jquery'), '1.0', true);
+		}
+//		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
+//		wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.js', array('jquery'), '1.0', true);
 		wp_enqueue_style('university_main_styles', get_theme_file_uri('/assets/fictional-university/build/style-index.css'));
 		wp_enqueue_style('roboto-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto.css');
 		wp_enqueue_style('roboto-condensed-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto-condensed.css');
@@ -68,7 +83,7 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 			$projectName = 'trillo';
 			wp_enqueue_style( 'opensans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/trillo/open-sans.css' );
 		}
-		loadAssetsDependingOnDevMode($projectName, false);
+		loadAssetsDependingOnDevMode($projectName, true);
 	}
 }
 
@@ -81,7 +96,7 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	if (strstr($_SERVER['SERVER_NAME'], '.local') && $devMode) {
 		wp_enqueue_script(
 			$projectName.'-js',
-			'http://localhost:8084/'.$projectName.'.js',
+			'http://localhost:8082/'.$projectName.'.js',
 			array(),
 			wp_get_theme()->get
 			( 'Version' )
@@ -89,7 +104,8 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	} else {
 		wp_enqueue_style(
 			$projectName.'-style',
-			get_stylesheet_directory_uri() . '/assets/advanced-css/dist/' . $projectName.'.css'
+//			get_stylesheet_directory_uri() . '/assets/advanced-css/dist/' . $projectName.'.css'
+			get_stylesheet_directory_uri() . '/dist/' . $projectName.'.css'
 		);
 	}
 }
