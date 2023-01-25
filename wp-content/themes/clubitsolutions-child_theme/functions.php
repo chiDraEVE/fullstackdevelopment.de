@@ -1,5 +1,8 @@
 <?php
-//	require_once 'assets/fictional-university/fictional-university.php';
+	const DEV_MODE = true;
+	
+	require_once 'assets/fictional-university/fictional-university.php';
+	require_once "inc/PortfolioHelper.php";
 	
 /**
  * Clubitsolutions-child_theme Theme functions and definitions
@@ -20,7 +23,7 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		get_stylesheet_directory_uri() . '/style.css',
 		array( 'clubitsolutions-theme-style' )
 	);
-	if (strstr($_SERVER['SERVER_NAME'], '.local') && true) {
+	if (strstr($_SERVER['SERVER_NAME'], '.local') && DEV_MODE) {
 		wp_enqueue_script(
 			'index-js',
 			'http://localhost:8082/index.js',
@@ -36,17 +39,17 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 		);
 	}
 	
+	
 	// Loading assets for Fictional-University-Project
-//	global $isFictionalUniversity;
-//	isFictionalUniversity();
-//	if ( $isFictionalUniversity ) {
-//		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
-//		wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/assets/fictional-university/scripts.js', array('jquery'), '1.0', true);
-//		wp_enqueue_style('roboto-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto.css');
-//		wp_enqueue_style('roboto-condensed-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto-condensed.css');
-//		wp_enqueue_style('font-awesome', get_stylesheet_directory_uri() . '/assets/fictional-university/fontawesome47/css/font-awesome.min.css');
-//		wp_enqueue_script('fictional-university-vendors', get_stylesheet_directory_uri() . '/assets/fictional-university/vendors-scripts.js');
-//	}
+	PortfolioHelper::isFictionalUniversity();
+	if ( PortfolioHelper::getIsFictionalUniversity() ) {
+		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
+		wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.js', array('jquery'), '1.0', true);
+		wp_enqueue_style('university_main_styles', get_theme_file_uri('/assets/fictional-university/build/style-index.css'));
+		wp_enqueue_style('roboto-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto.css');
+		wp_enqueue_style('roboto-condensed-font', get_stylesheet_directory_uri() . '/assets/fictional-university/roboto-condensed.css');
+		wp_enqueue_style('font-awesome', get_stylesheet_directory_uri() . '/assets/fictional-university/fontawesome47/css/font-awesome.min.css');
+	}
 	
 	// Loading assets for projects
 	if ( get_post_type() == 'project') {
@@ -99,10 +102,12 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 		if ( is_super_admin() ) {
 			global $template;
 			print_r( $template . "<br>");
-			global $isFictionalUniversity;
-			print_r( ($isFictionalUniversity) ? "fictional university global is set<br>" : "isFictionalUniversity not set<br>");
+//			print_r( get_block_templates() );
+			print_r((PortfolioHelper::getIsFictionalUniversity()) ? "Should be from fictional university" : "Fictional University static variable unset" );
+			echo "<br>";
 			global $projectName;
 			print_r( ($projectName) ? "projectName is set to: $projectName <br>" : "");
+			
 		}
 
 	}
@@ -117,7 +122,7 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	 * @param array $classes Existing body classes.
 	 * @return array Amended body classes.
 	 */
-	function custom_body_class( array $classes ) {
+	function custom_body_class( array $classes ): array {
 		global $projectName;
 		
 		if ( $projectName ) {
