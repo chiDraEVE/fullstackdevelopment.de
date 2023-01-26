@@ -1,6 +1,7 @@
 <?php
 	class PortfolioHelper {
 		private static $isFictionalUniversity = false;
+		private static $projectName;
 		
 		public static function getIsFictionalUniversity() {
 			return PortfolioHelper::$isFictionalUniversity;
@@ -8,6 +9,14 @@
 		
 		public static function setIsFictionalUniversity($isUniversity) {
 			PortfolioHelper::$isFictionalUniversity = $isUniversity;
+		}
+		
+		public static function getProjectName() {
+			return PortfolioHelper::$projectName;
+		}
+		
+		public static function setProjectName($name) {
+			PortfolioHelper::$projectName = $name;
 		}
 		
 		public static function isFictionalUniversity(): bool {
@@ -34,8 +43,7 @@
 				$isFictionalUniversity = true;
 			
 			if ($isFictionalUniversity) {
-				global $projectName;
-				$projectName = 'fictional-university';
+				self::$projectName = 'fictional-university';
 				require get_theme_file_path('/assets/fictional-university/inc/like-route.php');
 				require get_theme_file_path('/assets/fictional-university/inc/search-route.php');
 			}
