@@ -52,10 +52,10 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 				( 'Version' )
 			);
 		} else {
-			wp_enqueue_style(
-				'clubitsolutions-child_theme-style',
-				get_stylesheet_directory_uri() . '/dist/fictionalUniversity.css.css',
-				array( 'fictional-university-style' ));
+//			wp_enqueue_style(
+//				'clubitsolutions-child_theme-style',
+//				get_stylesheet_directory_uri() . '/dist/fictionalUniversity.css',
+//				array( 'fictional-university-style' ));
 			wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/dist/fictionalUniversity.js', array('jquery'), '1.0', true);
 		}
 //		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
@@ -68,22 +68,21 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 	
 	// Loading assets for projects
 	if ( get_post_type() == 'project') {
-		global $projectName;
 		if ( get_post_field( 'post_name', get_post()) == 'nexter') {
-			$projectName = 'nexter';
+			PortfolioHelper::setProjectName('nexter');
 			wp_enqueue_style('josefin-sans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/josefin-sans.css');
 			wp_enqueue_style('nunito-font', get_stylesheet_directory_uri() . '/assets/advanced-css/nexter/nunito.css');
 		}
 		if ( get_post_field( 'post_name', get_post()) == 'natours') {
-			$projectName = 'natours';
+			PortfolioHelper::setProjectName('natours');
 			wp_enqueue_style('lato-font', get_stylesheet_directory_uri() . '/assets/advanced-css/natours/css/lato.css');
 			wp_enqueue_style('linea-icon-font', get_stylesheet_directory_uri() . '/assets/advanced-css/natours/icon-font.css');
 		}
 		if ( get_post_field( 'post_name', get_post()) == 'trillo') {
-			$projectName = 'trillo';
+			PortfolioHelper::setProjectName('trillo');
 			wp_enqueue_style( 'opensans-font', get_stylesheet_directory_uri() . '/assets/advanced-css/trillo/open-sans.css' );
 		}
-		loadAssetsDependingOnDevMode($projectName, true);
+		loadAssetsDependingOnDevMode(PortfolioHelper::getProjectName(), true);
 	}
 }
 
@@ -116,14 +115,29 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	 */
 	function clubitsolutions_which_template_is_loaded() {
 		if ( is_super_admin() ) {
-			global $template;
-			print_r( $template . "<br>");
-//			print_r( get_block_templates() );
+//			global $template;
+//			print_r( $template . "<br>");
+//			var_dump( get_block_templates() );
 			print_r((PortfolioHelper::getIsFictionalUniversity()) ? "Should be from fictional university" : "Fictional University static variable unset" );
 			echo "<br>";
-			global $projectName;
-			print_r( ($projectName) ? "projectName is set to: $projectName <br>" : "");
-			
+			echo "projectName is set to: ";
+			print_r( (PortfolioHelper::getProjectName()) ?  PortfolioHelper::getProjectName() : "__none__");
+			echo "<br>";
+			echo "Post type is: " . get_post_type() . "<br>";
+			echo (is_archive()) ? "is archive" : "no archive";
+			echo "<br>";
+			$postTypesOfFictionalUniversity = array("program", "professor", "program", "event", "campus");
+			echo (is_post_type_archive($postTypesOfFictionalUniversity)) ? "is post type archive from fictional university" : "non post type archive";
+			echo "<br>";
+			if (is_page())
+				echo "is page <br>";
+			if (is_singular())
+				echo "is singular <br>";
+			if (is_single())
+				echo "is single <br>";
+			echo "categories: ";
+			print_r( get_the_category() );
+			echo "<br>";
 		}
 
 	}
@@ -139,7 +153,7 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	 * @return array Amended body classes.
 	 */
 	function custom_body_class( array $classes ): array {
-		global $projectName;
+		$projectName = PortfolioHelper::getProjectName();
 		
 		if ( $projectName ) {
 			$classes[] = $projectName;

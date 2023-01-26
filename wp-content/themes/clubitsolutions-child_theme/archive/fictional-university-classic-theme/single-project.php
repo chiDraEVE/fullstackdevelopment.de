@@ -18,7 +18,8 @@
 				the_post();
 				
 				/**
-				 * check for specifi projekcts like the example trillo. I didn't put the structure in the editor but will
+				 * check for specific projects like the example trillo. I didn't put the structure in the editor but
+                 * will
 				 * load it from a file and ignore content from editor
 				 */
 				switch ( $projectName ) {
