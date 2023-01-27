@@ -52,10 +52,9 @@ function clubitsolutions_theme_parent_theme_enqueue_styles() {
 				( 'Version' )
 			);
 		} else {
-//			wp_enqueue_style(
-//				'clubitsolutions-child_theme-style',
-//				get_stylesheet_directory_uri() . '/dist/fictionalUniversity.css',
-//				array( 'fictional-university-style' ));
+			wp_enqueue_style(
+				'fictional-university-style',
+				get_stylesheet_directory_uri() . '/dist/fictionalUniversity.css');
 			wp_enqueue_script('fictional-university-scripts', get_stylesheet_directory_uri() . '/dist/fictionalUniversity.js', array('jquery'), '1.0', true);
 		}
 //		wp_enqueue_style( 'fictional-university-style', get_stylesheet_directory_uri() . '/assets/fictional-university/dist/index.css' );
@@ -115,9 +114,6 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 	 */
 	function clubitsolutions_which_template_is_loaded() {
 		if ( is_super_admin() ) {
-//			global $template;
-//			print_r( $template . "<br>");
-//			var_dump( get_block_templates() );
 			print_r((PortfolioHelper::getIsFictionalUniversity()) ? "Should be from fictional university" : "Fictional University static variable unset" );
 			echo "<br>";
 			echo "projectName is set to: ";
@@ -129,20 +125,10 @@ function loadAssetsDependingOnDevMode($projectName, $devMode) {
 			$postTypesOfFictionalUniversity = array("program", "professor", "program", "event", "campus");
 			echo (is_post_type_archive($postTypesOfFictionalUniversity)) ? "is post type archive from fictional university" : "non post type archive";
 			echo "<br>";
-			if (is_page())
-				echo "is page <br>";
-			if (is_singular())
-				echo "is singular <br>";
-			if (is_single())
-				echo "is single <br>";
-			echo "categories: ";
-			print_r( get_the_category() );
-			echo "<br>";
 		}
-
 	}
 	
-	add_action( 'wp_footer', 'clubitsolutions_which_template_is_loaded' );
+	add_action( 'wp_footer', 'clubitsolutions_which_template_is_loaded', 100);
 	
 	/**
 	 * Add custom field body class(es) to the body classes.
