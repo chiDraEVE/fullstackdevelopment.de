@@ -9,9 +9,9 @@
 wp-content/*
 
 !wp-content/mu-plugins/
-wp-content/mu-plugins/*
-!wp-content/mu-plugins/fullstackdevelopment-post-types.php
-!wp-content/mu-plugins/university-post-types.php
+#wp-content/mu-plugins/*
+#!wp-content/mu-plugins/fullstackdevelopment-post-types.php
+#!wp-content/mu-plugins/university-post-types.php
 
 !wp-content/plugins/
 wp-content/plugins/*
@@ -19,9 +19,7 @@ wp-content/plugins/*
 
 !wp-content/themes/
 wp-content/themes/*
-!wp-content/themes/my27child
-!wp-content/themes/fictional-block-theme
-!wp-content/themes/clubitsolutions-child_theme
+!wp-content/themes/fullstackdevelopment-theme
 
 # ignore node dependency directories
 node_modules/
