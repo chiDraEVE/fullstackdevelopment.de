@@ -1,0 +1,56 @@
+# Ignoriere alles im Root-Verzeichnis
+/*
+!.gitignore
+!README.md
+!index.php
+
+
+# Ausnahme für spezifische Plugins und Themes. Ersetzen Sie 'my-plugin' und 'my-theme' durch die tatsächlichen Verzeichnisnamen Ihrer Plugins und Themes.
+!plugins/
+plugins/*
+!plugins/are-you-paying-attention
+!plugins/featured-professor
+!plugins/interactivity-quiz
+!plugins/new-database-table
+!plugins/our-first-unique-plugin
+!plugins/our-word-filter-plugin
+!plugins/pets-custom-post-type
+!plugins/solved-counter
+!plugins/udemy-plus
+!plugins/index.php
+
+!themes/
+themes/*
+!themes/fictional-clean-blocks
+!themes/udemy
+!themes/fullstackdevelopment-theme
+!themes/index.php
+
+!mu-plugins
+mu-plugins/*
+!mu-plugins/fullstackdevelopment-post-types.php
+!mu-plugins/university-post-types.php
+
+!oldsite
+
+# Ignoriere gebräuchliche Verzeichnis- und Dateitypen
+node_modules/
+*.sql
+.build/
+dist/
+
+# Temporäre Dateien
+*.tmp
+*.log
+*.bak
+~*
+
+# Systemdateien
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Ignoriere WordPress spezifische Dateien
+*.pot
+*.css.map
+*.js.map
