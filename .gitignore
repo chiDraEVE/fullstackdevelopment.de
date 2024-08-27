@@ -23,7 +23,7 @@ plugins/*
 themes/*
 !themes/fictional-clean-blocks
 !themes/udemy
-!themes/fullstackdevelopment-theme
+!themes/fullstack-theme
 !themes/index.php
 
 !mu-plugins
