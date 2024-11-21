@@ -52,9 +52,10 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function Edit() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+  const currentYear = new Date().getFullYear().toString();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
     ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-    children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Copyright Date Block – hello from the editor!', 'copyright-date-block')
+    children: [(0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Copyright', 'copyright-date-block'), "\xA9 2019 - ", currentYear]
   });
 }
 
@@ -147,9 +148,10 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+  const currentYear = new Date().getFullYear().toString();
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("p", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-    children: 'Copyright Date Block – hello from the saved content!'
+    children: ['Copyright', " \xA9 2019 - ", currentYear]
   });
 }
 
@@ -225,7 +227,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/copyright-date-block","version":"0.1.0","title":"Copyright Date Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false},"textdomain":"copyright-date-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"copyright-date/copright-date-block","version":"0.1.0","title":"Copyright Date Block","category":"widgets","icon":"calendar","description":"Add a Copyright date to a post or page","example":{},"supports":{"html":false},"textdomain":"copyright-date-block","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css"}');
 
 /***/ })
 
