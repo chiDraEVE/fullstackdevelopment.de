@@ -28,6 +28,7 @@ function bookstore_register_book_post_type(): void {
 		'public' => true,
 		'has_archive' => true,
 		'show_in_rest' => true,
+		'rest_base' => 'books',
 		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
 	);
 
@@ -38,7 +39,7 @@ add_action( 'init', 'bookstore_register_genre_taxonomy' );
 
 function bookstore_register_genre_taxonomy(): void {
 	$args = array(
-		'labels'       => array(
+		'labels' => array(
 			'name'          => 'Genres',
 			'singular_name' => 'Genre',
 			'edit_item'     => 'Edit Genre',
@@ -49,7 +50,7 @@ function bookstore_register_genre_taxonomy(): void {
 		),
 		'hierarchical' => true,
 		'rewrite'      => array( 'slug' => 'genre' ),
-		'show_in_rest'           => true,
+		'show_in_rest' => true,
 	);
 
 	register_taxonomy( 'genre', 'book', $args );
@@ -61,6 +62,48 @@ function bookstore_add_isbn_to_quick_edit( $keys, $post ) {
 		$keys[] = 'isbn';
 	}
 	return $keys;
+}
+
+add_action( 'admin_menu', 'bookstore_add_booklist_submenu', 11 );
+function bookstore_add_booklist_submenu() {
+	add_submenu_page(
+		'edit.php?post_type=book',
+		'Book List',
+		'Book List',
+		'edit_posts',
+		'book-list',
+		'bookstore_render_booklist'
+	);
+}
+
+function bookstore_render_booklist() {
+	?>
+	<div class="wrap" id="bookstore-booklist-admin">
+		<h1>Actions</h1>
+		<button id="bookstore-load-books">Load Books</button>
+		<button id="bookstore-fetch-books">Fetch Books</button>
+		<h2>Books</h2>
+		<textarea id="bookstore-booklist" cols="125" rows="15"></textarea>
+	</div>
+
+	<div style="width:50%;">
+		<h2>Add Book</h2>
+		<form>
+			<div>
+				<label for="bookstore-book-title">Book Title</label>
+				<input type="text" id="bookstore-book-title" placeholder="Title">
+			</div>
+			<div>
+				<label for="bookstore-book-content">Book Content</label>
+				<textarea id="bookstore-book-content" cols="100" rows="10"></textarea>
+			</div>
+			<div>
+				<input type="button" id="bookstore-submit-book" value="Add">
+			</div>
+		</form>
+	</div>
+
+	<?php
 }
 
 add_action( 'wp_enqueue_scripts', 'bookstore_enqueue_scripts' );
@@ -76,5 +119,16 @@ function bookstore_enqueue_scripts() {
 	wp_enqueue_script(
 		'bookstore-script',
 		plugins_url() . '/bookstore/bookstore.js'
+	);
+}
+
+add_action('admin_enqueue_scripts', 'bookstore_admin_enqueue_scripts');
+function bookstore_admin_enqueue_scripts(){
+	wp_enqueue_script(
+		'bookstore-admin-script',
+		plugins_url() . '/bookstore/admin_bookstore.js',
+		array( 'wp-api', 'wp-api-fetch' ),
+		'1.0.0',
+		true
 	);
 }
