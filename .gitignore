@@ -11,6 +11,7 @@ plugins/*
 !plugins/advanced-css-blocks
 !plugins/are-you-paying-attention
 !plugins/bookstore
+!plugins/bookstore-block
 !plugins/copyright-date-block
 !plugins/featured-professor
 !plugins/interactivity-quiz
