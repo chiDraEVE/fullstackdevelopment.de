@@ -4,6 +4,8 @@
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-i18n/
  */
 import { __ } from '@wordpress/i18n';
+import { useSelect } from '@wordpress/data';
+import { store as bookStore } from '@wordpress/core-data';
 
 /**
  * React hook that is used to mark the block wrapper element.
@@ -12,8 +14,6 @@ import { __ } from '@wordpress/i18n';
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
 import { useBlockProps } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
-import { store as bookStore } from '@wordpress/core-data';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -34,16 +34,23 @@ import './editor.scss';
 export default function Edit() {
 	const books = useSelect(
 		select =>
-			select(bookStore).getEntityRecords( 'postType', 'book' ),
+			select( bookStore ).getEntityRecords( 'postType', 'book' ),
 		[]
 	);
 
+	if ( ! books ) {
+		return (
+			<div { ...useBlockProps() }></div>
+		)
+	}
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Bookstore Block – hello from the editor!',
-				'bookstore-block'
-			) }
-		</p>
+		<div { ...useBlockProps() }>
+			{ books.map( ( book ) => (
+				<p>
+					<a href={ book.link }>{book.title.rendered}</a>
+				</p>
+			) ) }
+		</div>
 	);
 }
