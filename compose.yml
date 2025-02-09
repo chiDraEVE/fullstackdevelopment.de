@@ -10,10 +10,10 @@ services:
       - ./plugins/advanced-css-blocks:/var/www/html/wp-content/plugins/advanced-css-blocks
       - ./plugins/are-you-paying-attention:/var/www/html/wp-content/plugins/are-you-paying-attention
       - ./plugins/bookstore:/var/www/html/wp-content/plugins/bookstore
-      - ./plugins/bookstore-block:/var/www/html/wp-content/plugins/bookstore-block
+      - ./plugins/bookstore-block:/var/www/html/wp-content/plugins/bookstore-block:cached
       - ./plugins/copyright-date-block:/var/www/html/wp-content/plugins/copyright-date-block
       - ./plugins/featured-professor:/var/www/html/wp-content/plugins/featured-professor
-      - .//plugins/interactivity-quiz:/var/www/html/wp-content/plugins/interactivity-quiz
+      - ./plugins/interactivity-quiz:/var/www/html/wp-content/plugins/interactivity-quiz
       - ./plugins/new-database-table:/var/www/html/wp-content/plugins/new-database-table
       - ./plugins/our-first-unique-plugin:/var/www/html/wp-content/plugins/our-first-unique-plugin
       - ./plugins/our-word-filter-plugin:/var/www/html/wp-content/plugins/our-word-filter-plugin
