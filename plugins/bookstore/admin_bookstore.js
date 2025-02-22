@@ -32,15 +32,56 @@ if ( fetchBooksByRestButton ){
 function submitBook() {
     const title = document.getElementById( 'bookstore-book-title' ).value;
     const content = document.getElementById( 'bookstore-book-content' ).value;
+
+    // if (!bookstoreSettings.nonce) {
+    //     console.error('Nonce is missing');
+    //     return;
+    // }
+
     wp.apiFetch( {
         path: '/wp/v2/books/',
+        method: 'POST',
+        // headers: {
+        //     'X-WP-Nonce': bookstoreSettings.nonce
+        // },
+        data: {
+            title: title,
+            content: content,
+            status: "publish"
+        },
+    } ).then((result) => {
+        console.log(result);
+        // alert('Book saved!');
+    }).catch((error) => {
+        console.error('Error:', error);
+        alert('Failed to save book: ' + error.message);
+    });
+}
+
+function updateBook(id) {
+    const title = document.getElementById( 'bookstore-book-title' ).value;
+    const content = document.getElementById( 'bookstore-book-content' ).value;
+    wp.apiFetch( {
+        path: '/wp/v2/books/' + id,
         method: 'POST',
         data: {
             title: title,
             content: content
         },
     } ).then( ( result ) => {
-        alert( 'Book saved!' );
+        alert( 'Book updated!' );
+    } );
+}
+
+function deleteBook(id) {
+    const title = document.getElementById( 'bookstore-book-title' ).value;
+    const content = document.getElementById( 'bookstore-book-content' ).value;
+    wp.apiFetch( {
+        path: '/wp/v2/books/' + id,
+        method: 'DELETE',
+
+    } ).then( ( result ) => {
+        alert( 'Book deleted!' );
     } );
 }
 

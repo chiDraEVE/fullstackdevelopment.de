@@ -14,6 +14,7 @@ services:
       - ./plugins/copyright-date-block:/var/www/html/wp-content/plugins/copyright-date-block
       - ./plugins/featured-professor:/var/www/html/wp-content/plugins/featured-professor
       - ./plugins/interactivity-quiz:/var/www/html/wp-content/plugins/interactivity-quiz
+      - ./plugins/my-nav:/var/www/html/wp-content/plugins/my-nav
       - ./plugins/new-database-table:/var/www/html/wp-content/plugins/new-database-table
       - ./plugins/our-first-unique-plugin:/var/www/html/wp-content/plugins/our-first-unique-plugin
       - ./plugins/our-word-filter-plugin:/var/www/html/wp-content/plugins/our-word-filter-plugin
