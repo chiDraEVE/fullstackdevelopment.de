@@ -131,4 +131,13 @@ function bookstore_admin_enqueue_scripts(){
 		'1.0.0',
 		true
 	);
+
+	// Localize script to pass nonce
+//	wp_localize_script(
+//		'bookstore-admin-script',
+//		'bookstoreSettings',
+//		array(
+//			'nonce' => wp_create_nonce('bookstore_nonce')
+//		)
+//	);
 }
