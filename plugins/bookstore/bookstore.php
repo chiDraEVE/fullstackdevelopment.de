@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
+add_filter('acf/settings/remove_wp_meta_box', '__return_false');
+
 add_action( 'init', 'bookstore_register_book_post_type' );
 
 function bookstore_register_book_post_type(): void {
@@ -29,10 +31,22 @@ function bookstore_register_book_post_type(): void {
 		'has_archive' => true,
 		'show_in_rest' => true,
 		'rest_base' => 'books',
-		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt' ),
+		'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields' ),
 	);
 
 	register_post_type( 'book', $args );
+
+	register_meta(
+		'post',
+		'isbn',
+		array(
+			'single'       => true,
+			'type'         => 'string',
+			'default'      => '',
+			'show_in_rest' => true,
+			'object_subtype' => 'book'
+		)
+	);
 }
 
 add_action( 'init', 'bookstore_register_genre_taxonomy' );
@@ -54,6 +68,48 @@ function bookstore_register_genre_taxonomy(): void {
 	);
 
 	register_taxonomy( 'genre', 'book', $args );
+}
+
+add_action( 'init', 'wp_learn_register_meta');
+
+function wp_learn_register_meta() {
+	register_meta(
+		'post',
+		'location',
+		array(
+			'single'       => true,
+			'type'         => 'string',
+			'default'      => '',
+			'show_in_rest' => true,
+		)
+	);
+}
+
+add_action( 'init', 'bookstore_add_rest_fields' );
+
+function bookstore_add_rest_fields() {
+    register_rest_field(
+        'book',
+        'isbn',
+        array(
+            'get_callback' => 'bookstore_get_isbn',
+            'update_callback' => 'bookstore_update_isbn',
+            'schema' => array(
+                'description' => 'Book ISBN',
+                'type' => 'string',
+                'context' => array( 'view', 'edit' ),
+            ),
+        )
+    );
+}
+
+function bookstore_get_isbn( $book ) {
+	return get_post_meta( $book['id'], 'isbn', true );
+}
+
+function bookstore_update_isbn( $value, $book ) {
+    return update_post_meta( $book->ID, 'isbn', $value );
+
 }
 
 add_filter( 'postmeta_form_keys', 'bookstore_add_isbn_to_quick_edit', 10, 2 );
