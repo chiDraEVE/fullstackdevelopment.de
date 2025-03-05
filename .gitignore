@@ -15,6 +15,7 @@ plugins/*
 !plugins/copyright-date-block
 !plugins/featured-professor
 !plugins/interactivity-quiz
+!plugins/my-nav
 !plugins/new-database-table
 !plugins/our-first-unique-plugin
 !plugins/our-word-filter-plugin
@@ -41,7 +42,7 @@ mu-plugins/*
 # Ignoriere gebräuchliche Verzeichnis- und Dateitypen
 node_modules/
 *.sql
-.build/
+build/
 dist/
 
 # Temporäre Dateien
