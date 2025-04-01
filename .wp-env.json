@@ -1,0 +1,30 @@
+{
+  "port": 80,
+  "mappings": {
+    ".htacces": ".htaccess",
+    "wp-data": "./db-dumps",
+    "wp-content/themes/fullstack-theme": "./themes/fullstack-theme",
+    "wp-content/themes/fictional-clean-blocks": "./themes/fictional-clean-blocks",
+    "wp-content/themes/udemy": "./themes/udemy",
+    "wp-content/plugins/fullstackdevelopment-post-types.php": "./plugins/fullstackdevelopment-post-types.php",
+    "wp-content/plugins/university-post-types.php": "./plugins/university-post-types.php",
+    "wp-content/plugins/are-you-paying-attention": "./plugins/are-you-paying-attention",
+    "wp-content/plugins/bookstore": "./plugins/bookstore",
+    "wp-content/plugins/bookstore-block": "./plugins/bookstore-block",
+    "wp-content/plugins/copyright-date-block": "./plugins/copyright-date-block",
+    "wp-content/plugins/featured-professor": "./plugins/featured-professor",
+    "wp-content/plugins/interactivity-quiz": "./plugins/interactivity-quiz",
+    "wp-content/plugins/new-database-table": "./plugins/new-database-table",
+    "wp-content/plugins/our-first-unique-plugin": "./plugins/our-first-unique-plugin",
+    "wp-content/plugins/our-word-filter-plugin": "./plugins/our-word-filter-plugin",
+    "wp-content/plugins/pets-custom-post-type": "./plugins/pets-custom-post-type",
+    "wp-content/plugins/solved-counter": "./plugins/solved-counter",
+    "wp-content/plugins/udemy-plus": "./plugins/udemy-plus"
+  },
+  "config": {
+    "DOMAIN_CURRENT_SITE": "fullstackdevelopment.local",
+    "MULTISITE": true,
+    "SUBDOMAIN_INSTALL": false,
+    "PATH_CURRENT_SITE": "/"
+  }
+}
