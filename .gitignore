@@ -7,9 +7,10 @@
 !.idea/workspace.xml
 !.idea/runConfigurations
 
-db/
-logs/
-wp/
+db/*
+logs/*
+wp/*
+wp-content/*
 
 node_modules
 build

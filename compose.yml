@@ -1,35 +1,45 @@
 services:
   fullstackdevelopment:
-    image: wordpress:6.7.1
+    image: wordpress:6.7.2
     container_name: fullstackdevelopment
     restart: always
     volumes:
-      - ./db-dumps:/var/www/html/wp-content/db-dumps
-      - ./wp-content/mu-plugins:/var/www/html/wp-content/mu-plugins
-      - ./wp-content/plugins/advanced-css-blocks:/var/www/html/wp-content/plugins/advanced-css-blocks
-      - ./wp-content/plugins/are-you-paying-attention:/var/www/html/wp-content/plugins/are-you-paying-attention
-      - ./wp-content/plugins/bookstore:/var/www/html/wp-content/plugins/bookstore
-      - ./wp-content/plugins/bookstore-block:/var/www/html/wp-content/plugins/bookstore-block:cached
-      - ./wp-content/plugins/copyright-date-block:/var/www/html/wp-content/plugins/copyright-date-block
-      - ./wp-content/plugins/featured-professor:/var/www/html/wp-content/plugins/featured-professor
-      - ./wp-content/plugins/interactivity-quiz:/var/www/html/wp-content/plugins/interactivity-quiz
-      - ./wp-content/plugins/my-nav:/var/www/html/wp-content/plugins/my-nav
-      - ./wp-content/plugins/new-database-table:/var/www/html/wp-content/plugins/new-database-table
-      - ./wp-content/plugins/our-first-unique-plugin:/var/www/html/wp-content/plugins/our-first-unique-plugin
-      - ./wp-content/plugins/our-word-filter-plugin:/var/www/html/wp-content/plugins/our-word-filter-plugin
-      - ./wp-content/plugins/pets-custom-post-type:/var/www/html/wp-content/plugins/pets-custom-post-type
-      - ./wp-content/plugins/solved-counter:/var/www/html/wp-content/plugins/solved-counter
-      - ./wp-content/plugins/udemy-plus:/var/www/html/wp-content/plugins/udemy-plus
-      - ./wp-content/plugins/university-post-types.php:/var/www/html/wp-content/plugins/university-post-types.php
-      - ./wp-content/themes/fictional-clean-blocks:/var/www/html/wp-content/themes/fictional-clean-blocks
-      - ./wp-content/themes/udemy:/var/www/html/wp-content/themes/udemy
-      - ./wp-content/themes/fullstack-theme:/var/www/html/wp-content/themes/fullstack-theme
-      - uploads_fullstack:/var/www/html/wp-content/uploads
+      - ./db:/var/www/html/wp-content/db-dumps
+      - ./my-plugins/advanced-css-blocks:/var/www/html/wp-content/plugins/advanced-css-blocks
+      - ./my-plugins/are-you-paying-attention:/var/www/html/wp-content/plugins/are-you-paying-attention
+      - ./my-plugins/bookstore:/var/www/html/wp-content/plugins/bookstore
+      - ./my-plugins/bookstore-block:/var/www/html/wp-content/plugins/bookstore-block:cached
+      - ./my-plugins/copyright-date-block:/var/www/html/wp-content/plugins/copyright-date-block
+      - ./my-plugins/featured-professor:/var/www/html/wp-content/plugins/featured-professor
+      - ./my-plugins/interactivity-quiz:/var/www/html/wp-content/plugins/interactivity-quiz
+      - ./my-plugins/my-nav:/var/www/html/wp-content/plugins/my-nav
+      - ./my-plugins/new-database-table:/var/www/html/wp-content/plugins/new-database-table
+      - ./my-plugins/our-first-unique-plugin:/var/www/html/wp-content/plugins/our-first-unique-plugin
+      - ./my-plugins/our-word-filter-plugin:/var/www/html/wp-content/plugins/our-word-filter-plugin
+      - ./my-plugins/pets-custom-post-type:/var/www/html/wp-content/plugins/pets-custom-post-type
+      - ./my-plugins/solved-counter:/var/www/html/wp-content/plugins/solved-counter
+      - ./my-plugins/udemy-plus:/var/www/html/wp-content/plugins/udemy-plus
+      - ./my-plugins/university-post-types.php:/var/www/html/wp-content/plugins/university-post-types.php
+      - ./my-plugins/fullstackdevelopment-post-types.php:/var/www/html/wp-content/plugins/fullstackdevelopment-post-types.php
+      - ./my-themes/fictional-clean-blocks:/var/www/html/wp-content/themes/fictional-clean-blocks
+      - ./my-themes/udemy:/var/www/html/wp-content/themes/udemy
+      - ./my-themes/fullstack-theme:/var/www/html/wp-content/themes/fullstack-theme
+      - ./wp/wp-content/uploads:/var/www/html/wp-content/uploads
+      - ./setupDocker.sh:/var/www/html/setupDocker.sh
+      - ./wp/.htaccess:/var/www/html/.htaccess
+      - ./import-db-to-docker.sh:/var/www/html/import-db-to-docker.sh
+    env_file:
+      - .env
     environment:
-      WORDPRESS_DB_HOST: db_fullstack
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: root
-      WORDPRESS_DB_NAME: fullstackdevelopment
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ALLOW_MULTISITE', true);
+        define('MULTISITE', true);
+        define('SUBDOMAIN_INSTALL', true);
+        define('DOMAIN_CURRENT_SITE', 'fullstackdevelopment.local');
+        define('PATH_CURRENT_SITE', '/');
+        define('SITE_ID_CURRENT_SITE', 1);
+        define('BLOG_ID_CURRENT_SITE', 1);
+        define('FS_METHOD', 'direct');
     depends_on:
       - db_fullstack
     networks:
@@ -42,7 +52,6 @@ services:
       - "traefik.http.routers.subdomains.entrypoints=web"
       - "traefik.http.routers.subdomains.service=your-service"
       - "traefik.http.services.your-service.loadbalancer.server.port=80"
-
   db_fullstack:
     image: mysql:8.0
     container_name: db_fullstack
