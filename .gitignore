@@ -1,6 +1,15 @@
-./db
-./logs
-./wp
+# IntelliJ IDEA
+.idea/*
+!.idea/inspectionProfiles
+!.idea/codeStyles
+!.idea/vcs.xml
+!.idea/modules.xml
+!.idea/workspace.xml
+!.idea/runConfigurations
+
+db/
+logs/
+wp/
 
 node_modules
 build
