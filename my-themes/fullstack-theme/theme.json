@@ -1,0 +1,111 @@
+{
+  "version": 3,
+  "$schema": "https://schemas.wp.org/wp/6.6/theme.json",
+  "settings": {
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "units": [
+        "px", "rem", "vh", "vw", "%"
+      ],
+      "blockGap": true
+    },
+    "color": {
+      "palette": [
+        {
+          "color": "#991D0F",
+          "name": "Primary ~ Penn red",
+          "slug": "primary"
+        },
+        {
+          "color": "#CC7265",
+          "name": "Primary Light ~ Light Penn red",
+          "slug": "primary-light"
+        },
+        {
+          "color": "#660E08",
+          "name": "Primary Dark ~ Dark Penn red",
+          "slug": "primary-dark"
+        },
+        {
+          "color": "#1152B2",
+          "name": "Secondary ~ Sapphire",
+          "slug": "secondary"
+        },
+        {
+          "color": "#7FE1FF",
+          "name": "Secondary Light ~ Pale azure",
+          "slug": "secondary-light"
+        },
+        {
+          "color": "#0A3674",
+          "name": "Secondary Dark ~ Dark Sapphire",
+          "slug": "secondary-dark"
+        },
+        {
+          "color": "#FF8432",
+          "name": "ternary ~ Pumpkin",
+          "slug": "ternary"
+        },
+        {
+          "color": "#FFB17F",
+          "name": "Ternary Light ~ Light Pumpkin",
+          "slug": "ternary-light"
+        },
+        {
+          "color": "#CC5F19",
+          "name": "Ternary Dark ~ Dark Pumpkin",
+          "slug": "ternary-dark"
+        },
+        {
+          "color": "#81939E",
+          "name": "grey ~ Cadet gray",
+          "slug": "grey"
+        },
+        {
+          "color": "#BFC8D0",
+          "name": "Grey Light ~ Light Cadet gray",
+          "slug": "grey-light"
+        },
+        {
+          "color": "#596571",
+          "name": "Grey Dark ~ Dark Cadet gray",
+          "slug": "grey-dark"
+        },
+        {
+          "color": "#E8EBED",
+          "name": "light ~ Anti-flash white",
+          "slug": "light"
+        },
+        {
+          "color": "#F5F7F8",
+          "name": "Light Grey ~ Light Anti-flash white",
+          "slug": "light-grey"
+        },
+        {
+          "color": "#121517",
+          "name": "dark ~ Night",
+          "slug": "dark"
+        },
+        {
+          "color": "#2D2F30",
+          "name": "Dark Grey ~ Dark Night",
+          "slug": "dark-grey"
+        }
+      ]
+    }
+  },
+  "styles": {
+    "color": {
+      "background": "#ffffff",
+      "text": "#000000"
+    },
+    "elements": {
+      "heading": {
+        "color": {
+          "text": "var(--wp--preset--color--dark)"
+        }
+      }
+    }
+  }
+}
