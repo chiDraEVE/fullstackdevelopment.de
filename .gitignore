@@ -15,5 +15,6 @@ wp-content/*
 node_modules
 build
 dist
+.env
 *.db
 *.sql
