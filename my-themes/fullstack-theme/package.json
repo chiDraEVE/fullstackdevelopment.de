@@ -1,0 +1,31 @@
+{
+  "name": "fullstack-theme",
+  "version": "1.0.0",
+  "description": "my theme for fullstackdevelopment.de",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "wp-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chiDraEVE/fullstackdevelopment.de.git"
+  },
+  "keywords": [
+    "wordpress",
+    "fullstack",
+    "development"
+  ],
+  "author": "chiDra_EVE",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiDraEVE/fullstackdevelopment.de/issues"
+  },
+  "homepage": "https://github.com/chiDraEVE/fullstackdevelopment.de#readme",
+  "devDependencies": {
+    "@wordpress/icons": "^10.6.0",
+    "@wordpress/scripts": "^28.6.0",
+    "axios": "^1.7.5",
+    "browserlist": "^1.0.1"
+  }
+}
