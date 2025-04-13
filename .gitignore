@@ -1,20 +1,62 @@
-# IntelliJ IDEA
-.idea/*
-!.idea/inspectionProfiles
-!.idea/codeStyles
-!.idea/vcs.xml
-!.idea/modules.xml
-!.idea/workspace.xml
-!.idea/runConfigurations
+# Ignoriere alles im Root-Verzeichnis
+/*
+!.gitignore
+!README.md
+!index.php
 
-db/*
-logs/*
-wp/*
-wp-content/*
 
-node_modules
-build
-dist
-.env
-*.db
+# Ausnahme für spezifische Plugins und Themes. Ersetzen Sie 'my-plugin' und 'my-theme' durch die tatsächlichen Verzeichnisnamen Ihrer Plugins und Themes.
+!plugins/
+plugins/*
+!plugins/advanced-css-blocks
+!plugins/are-you-paying-attention
+!plugins/bookstore
+!plugins/bookstore-block
+!plugins/copyright-date-block
+!plugins/featured-professor
+!plugins/interactivity-quiz
+!plugins/my-nav
+!plugins/new-database-table
+!plugins/our-first-unique-plugin
+!plugins/our-word-filter-plugin
+!plugins/pets-custom-post-type
+!plugins/solved-counter
+!plugins/udemy-plus
+!plugins/index.php
+!plugins/university-post-types.php
+
+!themes/
+themes/*
+!themes/fictional-clean-blocks
+!themes/udemy
+!themes/fullstack-theme
+!themes/index.php
+
+!mu-plugins
+mu-plugins/*
+!mu-plugins/fullstackdevelopment-post-types.php
+!mu-plugins/university-post-types.php
+
+!oldsite
+
+# Ignoriere gebräuchliche Verzeichnis- und Dateitypen
+node_modules/
 *.sql
+build/
+dist/
+
+# Temporäre Dateien
+*.tmp
+*.log
+*.bak
+~*
+
+# Systemdateien
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Ignoriere WordPress spezifische Dateien
+*.pot
+*.css.map
+*.js.map
