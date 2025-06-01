@@ -35,7 +35,6 @@ themes/*
 !mu-plugins
 mu-plugins/*
 !mu-plugins/fullstackdevelopment-post-types.php
-!mu-plugins/university-post-types.php
 
 !oldsite
 
