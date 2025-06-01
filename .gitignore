@@ -4,6 +4,7 @@
 !README.md
 !index.php
 
+!bin/
 
 # Ausnahme für spezifische Plugins und Themes. Ersetzen Sie 'my-plugin' und 'my-theme' durch die tatsächlichen Verzeichnisnamen Ihrer Plugins und Themes.
 !plugins/
