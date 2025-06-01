@@ -1,6 +1,6 @@
 <?php
 
-use use plugins\newrequire_once plugin_dir_path(__FILE__) . 'GetPets.php';
+require_once plugin_dir_path(__FILE__) . 'GetPets.php';
 $getPets = new GetPets();
 
 get_header(); ?>

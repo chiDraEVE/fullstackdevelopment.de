@@ -1,7 +1,5 @@
 <?php
 
-namespace plugins\new-database-table\inc-database - table\inc;
-
 class GetPets
 {
     function __construct() {
