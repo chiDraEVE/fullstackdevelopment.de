@@ -8,6 +8,16 @@
 	"icon": "smiley",
 	"description": "Displays a list of books for a reading list.",
 	"example": {},
+	"attributes": {
+		"showContent": {
+			"type": "boolean",
+			"default": true
+		},
+		"showImage": {
+			"type": "boolean",
+			"default": true
+		}
+	},
 	"supports": {
 		"html": false,
 		"align": true,
