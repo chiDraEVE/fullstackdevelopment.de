@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n';
 import { useEntityProp } from '@wordpress/core-data'
 import { useSelect } from '@wordpress/data'
 import { Spinner } from '@wordpress/components'
-import Rating from '@mui/material/Rating/index.js'
+import Rating from '@mui/material/Rating';
 import icons from '../../icons.js';
 import './main.css';
 

@@ -17,12 +17,14 @@ plugins/*
 !plugins/featured-professor
 !plugins/interactivity-quiz
 !plugins/my-nav
+!plugins/my-reading-list
 !plugins/new-database-table
 !plugins/our-first-unique-plugin
 !plugins/our-word-filter-plugin
 !plugins/pets-custom-post-type
 !plugins/solved-counter
 !plugins/udemy-plus
+!plugins/wp-learn-todo
 !plugins/index.php
 !plugins/university-post-types.php
 

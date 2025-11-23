@@ -1,4 +1,4 @@
-import Rating from '@mui/material/Rating/index.js'
+import Rating from '@mui/material/Rating'
 import { render, useState, useEffect } from '@wordpress/element'
 import apiFetch from '@wordpress/api-fetch'
 
