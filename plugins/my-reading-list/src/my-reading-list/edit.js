@@ -24,6 +24,7 @@ import BookList from './components/BookList'
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 import './editor.scss';
+import BlockControls from "./components/BlockControls";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -47,26 +48,7 @@ export default function Edit( { attributes, setAttributes} ) {
 
 	return (
 		<div {...useBlockProps()}>
-			<InspectorControls key="setting">
-				<Panel>
-					<PanelBody title="My Reading List Settings">
-						<ToggleControl
-							label="Toggle Image"
-							checked={ showImage }
-							onChange={ (newValue) => {
-								setAttributes( { showImage: newValue } );
-							} }
-						/>
-						<ToggleControl
-							label="Toggle Content"
-							checked={ showContent }
-							onChange={ (newValue) => {
-								setAttributes( { showContent: newValue } );
-							} }
-						/>
-					</PanelBody>
-				</Panel>
-			</InspectorControls>
+			<BlockControls attributes={ attributes } setAttributes={ setAttributes } />
 			<p>{__('My Reading List – hello from the editor!', 'my-reading-list')}</p>
 			<BookList books={ books } attributes = { attributes }/>
 		</div>
