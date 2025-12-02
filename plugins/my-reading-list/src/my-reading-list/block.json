@@ -16,6 +16,12 @@
 		"showImage": {
 			"type": "boolean",
 			"default": true
+		},
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "p",
+			"default": "My Reading List"
 		}
 	},
 	"supports": {
