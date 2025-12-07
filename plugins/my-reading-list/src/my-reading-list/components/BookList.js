@@ -1,6 +1,6 @@
+// javascript
 export default function BookList( { books, attributes } ) {
-
-	const { showImage, showContent } = attributes
+	const { showImage = true, showContent = true } = attributes || {};
 
 	if ( ! books ) {
 		return null;
@@ -13,5 +13,4 @@ export default function BookList( { books, attributes } ) {
 			{ showContent && <div dangerouslySetInnerHTML={ { __html: book.content.rendered } }></div> }
 		</div>
 	) );
-
 }

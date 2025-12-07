@@ -60,37 +60,40 @@ function my_reading_list_get_book_featured_image_src( $object ) {
 	return false;
 }
 
-add_action( 'init', 'my_reading_list_reading_list_block_init' );
-function my_reading_list_reading_list_block_init() {
-	/**
-	 * Registers the block(s) metadata from the `blocks-manifest.php` and registers the block type(s)
-	 * based on the registered block metadata.
-	 * Added in WordPress 6.8 to simplify the block metadata registration process added in WordPress 6.7.
-	 *
-	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
-	 */
-	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
-		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-		return;
+function my_reading_list_render_callback( $attributes ) {
+	error_log("render_callback hit");
+	$args  = array(
+		'post_type' => 'book',
+	);
+	$books = get_posts( $args );
+
+	$wrapper_attributes = get_block_wrapper_attributes();
+
+	$output  = '';
+	$output .= sprintf( '<div %1$s>', $wrapper_attributes );
+	$output .= '<p>My Reading List – hello from the rendered content!</p>';
+
+	foreach ( $books as $book ) {
+		$output .= '<div>';
+		$output .= '<h2>' . $book->post_title . '</h2>';
+		if ( $attributes['showImage'] ) {
+			$output .= get_the_post_thumbnail( $book->ID, 'medium' );
+		}
+		if ( $attributes['showContent'] ) {
+			$output .= $book->post_content;
+		}
+		$output .= '</div>';
 	}
 
-	/**
-	 * Registers the block(s) metadata from the `blocks-manifest.php` file.
-	 * Added to WordPress 6.7 to improve the performance of block type registration.
-	 *
-	 * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
-	 */
-	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
-		wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-	}
-	/**
-	 * Registers the block type(s) in the `blocks-manifest.php` file.
-	 *
-	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
-	 */
-	$manifest_data = require __DIR__ . '/build/blocks-manifest.php';
-	foreach ( array_keys( $manifest_data ) as $block_type ) {
-		register_block_type( __DIR__ . "/build/{$block_type}" );
-	}
+	$output .= '</div>';
+
+	return $output;
 }
+
+add_action('init', function() {
+	$block_path = __DIR__ . '/build/my-reading-list';
+	register_block_type($block_path, [
+		'render_callback' => 'my_reading_list_render_callback'
+	]);
+});
 

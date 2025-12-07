@@ -16,12 +16,6 @@
 		"showImage": {
 			"type": "boolean",
 			"default": true
-		},
-		"content": {
-			"type": "string",
-			"source": "html",
-			"selector": "p",
-			"default": "My Reading List"
 		}
 	},
 	"supports": {
@@ -33,6 +27,7 @@
 		}
 	},
 	"textdomain": "my-reading-list",
+	"render": "my_reading_list_render_callback",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./style-index.css",
