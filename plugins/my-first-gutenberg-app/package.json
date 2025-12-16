@@ -5,7 +5,10 @@
   "description": "My first Gutenberg App.",
   "author": "The WordPress Contributors",
   "license": "GPL-2.0-or-later",
-  "keywords": [ "WordPress", "block" ],
+  "keywords": [
+    "WordPress",
+    "block"
+  ],
   "homepage": "https://github.com/WordPress/gutenberg-examples/",
   "repository": "git+https://github.com/WordPress/gutenberg-examples.git",
   "bugs": {
@@ -13,7 +16,11 @@
   },
   "main": "build/index.js",
   "devDependencies": {
-    "@wordpress/scripts": "^18.0.1"
+    "@wordpress/components": "^30.9.0",
+    "@wordpress/core-data": "^7.36.0",
+    "@wordpress/data": "^10.36.0",
+    "@wordpress/html-entities": "^4.36.0",
+    "@wordpress/scripts": "^31.1.0"
   },
   "scripts": {
     "build": "wp-scripts build",
