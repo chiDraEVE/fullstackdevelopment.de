@@ -16,6 +16,7 @@ plugins/*
 !plugins/copyright-date-block
 !plugins/featured-professor
 !plugins/interactivity-quiz
+!plugins/my-first-gutenberg-app
 !plugins/my-nav
 !plugins/my-reading-list
 !plugins/new-database-table
