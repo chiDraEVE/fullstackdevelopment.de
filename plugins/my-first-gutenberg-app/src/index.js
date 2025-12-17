@@ -1,8 +1,34 @@
-import {SearchControl, Spinner} from '@wordpress/components';
+import { Button, Modal, SearchControl, Spinner, TextControl} from '@wordpress/components';
 import { useState, createRoot } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { store as coreDataStore } from '@wordpress/core-data';
 import { decodeEntities } from '@wordpress/html-entities';
+import { EditPageForm } from "./edit";
+
+function PageEditButton({ pageId }) {
+    const [ isOpen, setOpen ] = useState( false );
+    const openModal = () => setOpen( true );
+    const closeModal = () => setOpen( false );
+    return (
+        <>
+            <Button
+                onClick={ openModal }
+                variant="primary"
+            >
+                Edit
+            </Button>
+            { isOpen && (
+                <Modal onRequestClose={ closeModal } title="Edit page">
+                    <EditPageForm
+                        pageId={pageId}
+                        onCancel={closeModal}
+                        onSaveFinished={closeModal}
+                    />
+                </Modal>
+            ) }
+        </>
+    )
+}
 
 function MyFirstApp() {
     const [ searchTerm, setSearchTerm ] = useState( '' );
@@ -47,12 +73,16 @@ function PagesList( { hasResolved, pages } ) {
             <thead>
             <tr>
                 <th>Title</th>
+                <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             { pages.map( ( page ) => (
                 <tr key={ page.id }>
                     <td>{ decodeEntities( page.title.rendered ) }</td>
+                    <td>
+                        <PageEditButton pageId = { page.id } />
+                    </td>
                 </tr>
             ) ) }
             </tbody>
