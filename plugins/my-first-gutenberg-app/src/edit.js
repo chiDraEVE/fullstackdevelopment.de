@@ -1,10 +1,12 @@
-import {Button, TextControl} from "@wordpress/components";
+import {Button, Spinner, TextControl} from "@wordpress/components";
 import {useDispatch, useSelect} from "@wordpress/data";
 import { store as coreDataStore } from '@wordpress/core-data';
 
 export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
-    const { lastError, page } = useSelect(
+    const { isSaving, hasEdits, lastError, page } = useSelect(
         select => ({
+            isSaving: select( coreDataStore ).isSavingEntityRecord( 'postType', 'page', pageId ),
+            hasEdits: select( coreDataStore ).hasEditsForEntityRecord( 'postType', 'page', pageId ),
             page: select(coreDataStore).getEditedEntityRecord('postType', 'page', pageId),
             lastError: select(coreDataStore).getLastEntitySaveError('postType', 'page', pageId),
         }),[ pageId ]
@@ -28,10 +30,19 @@ export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
                     onChange={ handleChange }
                 />
                 <div className="form-buttons">
-                    <Button onClick={ handleSave } variant="primary">
-                        Save
+                    <Button onClick={ handleSave } variant="primary" disabled={ ! hasEdits || isSaving }>
+                        { isSaving ? (
+                            <>
+                                <Spinner/>
+                                Saving
+                            </>
+                        ) : 'Save' }
                     </Button>
-                    <Button onClick={ onCancel } variant="tertiary">
+                    <Button
+                        onClick={ onCancel }
+                        variant="tertiary"
+                        disabled={ isSaving }
+                    >
                         Cancel
                     </Button>
                 </div>
