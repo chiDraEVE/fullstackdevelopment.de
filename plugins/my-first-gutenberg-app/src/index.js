@@ -1,9 +1,10 @@
-import { Button, Modal, SearchControl, Spinner, TextControl} from '@wordpress/components';
+import { Button, Modal, SearchControl, Spinner } from '@wordpress/components';
 import { useState, createRoot } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import { store as coreDataStore } from '@wordpress/core-data';
 import { decodeEntities } from '@wordpress/html-entities';
 import { EditPageForm } from "./edit";
+import { CreatePageButton } from "./create";
 
 function PageEditButton({ pageId }) {
     const [ isOpen, setOpen ] = useState( false );
@@ -51,10 +52,13 @@ function MyFirstApp() {
 
     return (
         <div>
-            <SearchControl
-                value={ searchTerm }
-                onChange={ setSearchTerm }
-            />
+            <div className="list-controls">
+                <SearchControl
+                    value={ searchTerm }
+                    onChange={ setSearchTerm }
+                />
+                <CreatePageButton />
+            </div>
             <PagesList hasResolved={ hasResolved } pages={ pages }/>
         </div>
     );
