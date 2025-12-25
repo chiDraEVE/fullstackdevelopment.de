@@ -1,4 +1,4 @@
-import { useDispatch } from '@wordpress/data';
+import {useDispatch, useSelect} from '@wordpress/data';
 import { Button, Modal, TextControl } from '@wordpress/components';
 import {useState} from "@wordpress/element";
 import {PageForm} from "./PageForm";
@@ -39,14 +39,25 @@ export function CreatePageForm( { onCancel, onSaveFinished } ) {
             onSaveFinished();
         }
     };
+    const { lastError, isSaving } = useSelect(
+        ( select ) => ( {
+            // Notice the missing pageId argument:
+            lastError: select( coreDataStore )
+                .getLastEntitySaveError( 'postType', 'page' ),
+            // Notice the missing pageId argument
+            isSaving: select( coreDataStore )
+                .isSavingEntityRecord( 'postType', 'page' ),
+        } ),
+        []
+    );
 
     return (
         <PageForm
             title={ title }
             onChangeTitle={ setTitle }
             hasEdits={ !!title }
-            // lastError={ lastError }
-            // isSaving={ isSaving }
+            lastError={ lastError }
+            isSaving={ isSaving }
             onCancel={ onCancel }
             onSave={ handleSave }
         />
