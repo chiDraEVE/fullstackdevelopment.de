@@ -1,35 +1,13 @@
-import { Button, Modal, SearchControl, Spinner } from '@wordpress/components';
+import {Button, Modal, SearchControl, SnackbarList, Spinner} from '@wordpress/components';
 import { useState, createRoot } from '@wordpress/element';
-import { useSelect } from '@wordpress/data';
+import {useDispatch, useSelect} from '@wordpress/data';
 import { store as coreDataStore } from '@wordpress/core-data';
 import { decodeEntities } from '@wordpress/html-entities';
-import { EditPageForm } from "./edit";
-import { CreatePageButton } from "./create";
+import { store as noticesStore } from '@wordpress/notices';
 
-function PageEditButton({ pageId }) {
-    const [ isOpen, setOpen ] = useState( false );
-    const openModal = () => setOpen( true );
-    const closeModal = () => setOpen( false );
-    return (
-        <>
-            <Button
-                onClick={ openModal }
-                variant="primary"
-            >
-                Edit
-            </Button>
-            { isOpen && (
-                <Modal onRequestClose={ closeModal } title="Edit page">
-                    <EditPageForm
-                        pageId={pageId}
-                        onCancel={closeModal}
-                        onSaveFinished={closeModal}
-                    />
-                </Modal>
-            ) }
-        </>
-    )
-}
+import { EditPageButton } from "./edit";
+import { CreatePageButton } from "./create";
+import {DeletePageButton} from "./delete";
 
 function MyFirstApp() {
     const [ searchTerm, setSearchTerm ] = useState( '' );
@@ -60,6 +38,7 @@ function MyFirstApp() {
                 <CreatePageButton />
             </div>
             <PagesList hasResolved={ hasResolved } pages={ pages }/>
+            <Notifications />
         </div>
     );
 }
@@ -85,12 +64,34 @@ function PagesList( { hasResolved, pages } ) {
                 <tr key={ page.id }>
                     <td>{ decodeEntities( page.title.rendered ) }</td>
                     <td>
-                        <PageEditButton pageId = { page.id } />
+                        <div className="form-buttons">
+                            <EditPageButton pageId={ page.id } />
+                            {/* <span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji">↓</span></span></span> This is the only change in the PagesList component */}
+                            <DeletePageButton pageId={ page.id }/>
+                            {/* <span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji"><span aria-hidden="true" class="wp-exclude-emoji">↑</span></span></span> This is the only change in the PagesList component */}
+                        </div>
                     </td>
                 </tr>
             ) ) }
             </tbody>
         </table>
+    );
+}
+
+function Notifications() {
+    const notices = useSelect(
+        ( select ) => select( noticesStore ).getNotices(),
+        []
+    );
+    const { removeNotice } = useDispatch( noticesStore );
+    const snackbarNotices = notices.filter( ({ type }) => type === 'snackbar' );
+
+    return (
+        <SnackbarList
+            notices={ snackbarNotices }
+            className="components-editor-notices__snackbar"
+            onRemove={ removeNotice }
+        />
     );
 }
 

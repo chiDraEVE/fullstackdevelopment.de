@@ -1,7 +1,33 @@
-import {Button, Spinner, TextControl} from "@wordpress/components";
+import {Button, Modal, Spinner, TextControl} from "@wordpress/components";
 import {useDispatch, useSelect} from "@wordpress/data";
 import { store as coreDataStore } from '@wordpress/core-data';
 import {PageForm} from "./PageForm";
+import {useState} from "@wordpress/element";
+
+export function EditPageButton({ pageId }) {
+    const [ isOpen, setOpen ] = useState( false );
+    const openModal = () => setOpen( true );
+    const closeModal = () => setOpen( false );
+    return (
+        <>
+            <Button
+                onClick={ openModal }
+                variant="primary"
+            >
+                Edit
+            </Button>
+            { isOpen && (
+                <Modal onRequestClose={ closeModal } title="Edit page">
+                    <EditPageForm
+                        pageId={pageId}
+                        onCancel={closeModal}
+                        onSaveFinished={closeModal}
+                    />
+                </Modal>
+            ) }
+        </>
+    )
+}
 
 export function EditPageForm( { pageId, onCancel, onSaveFinished } ) {
     const { isSaving, hasEdits, lastError, page } = useSelect(
