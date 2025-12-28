@@ -4,6 +4,13 @@
  *
  */
 
+defined('ABSPATH') || exit;
+
+define('MY_PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('MY_PLUGIN_URL', plugins_url('', __FILE__));
+
+require_once MY_PLUGIN_PATH . 'admin/environment-type.php';
+
 function my_admin_menu() {
     // Create a new admin page for our app.
     add_menu_page(

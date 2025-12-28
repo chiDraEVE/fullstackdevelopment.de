@@ -49,3 +49,13 @@ button .components-spinner {
     flex-grow: 1;
     margin-right: 8px;
 }
+
+#wp-admin-bar-site-env-info .site-url {
+    opacity: 0.8;
+    margin-right: 6px;
+}
+
+li#wp-admin-bar-site-env-info.site-env-development { background: #2271b1; }
+li#wp-admin-bar-site-env-info.site-env-staging     { background: #ffb900; color: #000; }
+li#wp-admin-bar-site-env-info.site-env-production  { background: #d63638; }
+li#wp-admin-bar-site-env-info.site-env-local       { background: #00ba79; }
