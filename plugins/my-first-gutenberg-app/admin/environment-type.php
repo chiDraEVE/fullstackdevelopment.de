@@ -1,4 +1,38 @@
 <?php
+function shell_exec_available(): bool {
+    return function_exists( 'shell_exec' )
+        && ! in_array( 'shell_exec', array_map( 'trim', explode( ',', ini_get( 'disable_functions' ) ) ), true );
+}
+
+function get_git_branch(): ?string {
+
+    if ( wp_get_environment_type() !== 'local' ) {
+        return null;
+    }
+
+    if ( ! shell_exec_available() ) {
+        return null;
+    }
+
+    // optional: Caching
+    static $branch = null;
+    if ( $branch !== null ) {
+        return $branch;
+    }
+
+    $repo_path = WP_CONTENT_DIR;
+
+    $cmd = sprintf(
+        'cd %s && git branch --show-current 2>/dev/null',
+        escapeshellarg( WP_CONTENT_DIR )
+    );
+
+    $branch = trim( shell_exec( $cmd ) );
+
+    return $branch ?: null;
+}
+
+
 add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
 
     if ( ! is_admin_bar_showing() ) {
@@ -11,8 +45,8 @@ add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
     $wp_admin_bar->add_node( [
         'id'    => 'site-env-info',
         'title' => sprintf(
-            '<span class="site-url">%s</span> <span class="site-env">%s</span>',
-            esc_html( $url ),
+            '<span class="git-branch">%s</span> <span class="site-env">%s</span>',
+            get_git_branch(),
             esc_html( strtoupper( $env ) )
         ),
         'meta'  => [
