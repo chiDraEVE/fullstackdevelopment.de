@@ -32,6 +32,28 @@ function get_git_branch(): ?string {
     return $branch ?: null;
 }
 
+function get_branch_class( string $branch ): string {
+    // master / main
+    if ( in_array($branch, ['master','main'], true) ) {
+        return 'branch-master';
+    }
+
+    // staging / prod / development
+    if ( in_array($branch, ['staging','production','development'], true) ) {
+        return 'branch-' . sanitize_title($branch);
+    }
+
+    // feature/* oder learn/*
+    if ( str_starts_with($branch, 'feature/') ) {
+        return 'branch-feature';
+    }
+    if ( str_starts_with($branch, 'learn/') ) {
+        return 'branch-learn';
+    }
+
+    // fallback
+    return 'branch-generic';
+}
 
 add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
 
@@ -39,18 +61,21 @@ add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
         return;
     }
 
-    $env  = wp_get_environment_type();
-    $url  = get_site_url();
+    $branch = get_git_branch(); // z.B. learn/advanced_css
+    $branch_class = get_branch_class( $branch );
+    $env = wp_get_environment_type();
 
     $wp_admin_bar->add_node( [
         'id'    => 'site-env-info',
         'title' => sprintf(
-            '<span class="git-branch">%s</span> <span class="site-env">%s</span>',
-            get_git_branch(),
-            esc_html( strtoupper( $env ) )
+            '<span class="git-branch %1$s">%2$s</span> <span class="site-env env-%3$s">%4$s</span>',
+            esc_attr($branch_class),
+            esc_html($branch),
+            esc_attr($env),
+            esc_html(strtoupper($env))
         ),
         'meta'  => [
-            'class' => 'site-env-info site-env-' . esc_attr( $env ),
+            'class' => 'site-env-info site-env-' . esc_attr($env),
         ],
     ] );
 
@@ -59,7 +84,7 @@ add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
 add_action( 'admin_enqueue_scripts', function () {
     wp_enqueue_style(
         'site-env-bar',
-        MY_PLUGIN_URL . 'admin/admin-style.css',
+        MY_PLUGIN_URL . '/admin/admin-style.css',
         [],
         '1.0'
     );

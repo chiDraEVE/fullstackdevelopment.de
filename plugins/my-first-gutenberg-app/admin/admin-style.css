@@ -1,0 +1,15 @@
+/* Branch-Farben (Textfarbe) */
+.git-branch.branch-master { color: #fb5de5; }
+.git-branch.branch-production { color: #fa2626; }
+.git-branch.branch-staging { color: #ffa945; }
+.git-branch.branch-development { color: #6bbfff; }
+.git-branch.branch-feature { color: #cbff81; }
+.git-branch.branch-learn { color: #77fad3; }
+.git-branch.branch-generic { color: #ededed; }
+
+/* Environment-Hintergrund */
+#wp-admin-bar-site-env-info span.site-env { padding: 4px 10px; }
+.site-env.env-local       { background: #00ba79; color: #fff; }
+.site-env.env-development { background: #2271b1; color: #fff; }
+.site-env.env-staging     { background: #ffb900; color: #000; }
+.site-env.env-production  { background: #d63638; color: #fff; }
