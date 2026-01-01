@@ -61,31 +61,54 @@ add_action( 'admin_bar_menu', function ( WP_Admin_Bar $wp_admin_bar ) {
         return;
     }
 
-    $branch = get_git_branch(); // z.B. learn/advanced_css
-    $branch_class = get_branch_class( $branch );
     $env = wp_get_environment_type();
 
-    $wp_admin_bar->add_node( [
-        'id'    => 'site-env-info',
-        'title' => sprintf(
-            '<span class="git-branch %1$s">%2$s</span> <span class="site-env env-%3$s">%4$s</span>',
-            esc_attr($branch_class),
-            esc_html($branch),
-            esc_attr($env),
-            esc_html(strtoupper($env))
-        ),
-        'meta'  => [
-            'class' => 'site-env-info site-env-' . esc_attr($env),
-        ],
-    ] );
+    if ( $env === 'local' ) {
+        $branch = get_git_branch(); // z.B. learn/advanced_css
+        $branch_class = get_branch_class( $branch );
+
+        $wp_admin_bar->add_node( [
+            'id'    => 'site-env-info',
+            'title' => sprintf(
+                '<span class="git-branch %1$s">%2$s</span> <span class="site-env env-%3$s">%4$s</span>',
+                esc_attr($branch_class),
+                esc_html($branch),
+                esc_attr($env),
+                esc_html(strtoupper($env))
+            ),
+            'meta'  => [
+                'class' => 'site-env-info site-env-' . esc_attr($env),
+            ],
+        ] );
+    } else {
+
+        $wp_admin_bar->add_node([
+            'id' => 'site-env-info',
+            'title' => sprintf(
+                '<span class="site-env env-%1$s">%2$s</span>',
+                esc_attr($env),
+                esc_html(strtoupper($env))
+            ),
+            'meta' => [
+                'class' => 'site-env-info site-env-' . esc_attr($env),
+            ],
+        ]);
+    }
 
 }, 999 );
 
-add_action( 'admin_enqueue_scripts', function () {
+add_action( 'admin_enqueue_scripts', 'env_admin_bar_styles' );
+add_action( 'wp_enqueue_scripts', 'env_admin_bar_styles' );
+
+function env_admin_bar_styles() {
+    if ( ! is_admin_bar_showing() ) {
+        return;
+    }
+
     wp_enqueue_style(
         'site-env-bar',
         MY_PLUGIN_URL . '/admin/admin-style.css',
         [],
         '1.0'
     );
-} );
+}
