@@ -51,6 +51,10 @@ function get_branch_class( string $branch ): string {
         return 'branch-learn';
     }
 
+    if ( str_starts_with($branch, 'ui/') ) {
+        return 'branch-ui';
+    }
+
     // fallback
     return 'branch-generic';
 }
