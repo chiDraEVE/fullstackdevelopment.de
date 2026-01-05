@@ -2,6 +2,40 @@
   "version": 3,
   "$schema": "https://schemas.wp.org/wp/6.6/theme.json",
   "settings": {
+    "typography": {
+      "fontFamilies": [
+        {
+          "fontFamily": "\"Crimson Pro\", serif",
+          "name": "Crimson Pro",
+          "slug": "crimson-pro",
+          "fontFace": [
+            {
+              "fontFamily": "Crimson Pro",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/crimson-pro-v21-latin-regular.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Crimson Pro",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/crimson-pro-v21-latin-700.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Crimson Pro",
+              "fontWeight": "400",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/crimson-pro-v21-latin-italic.woff2"
+              ]
+            }
+          ]
+        }]
+    },
     "spacing": {
       "margin": true,
       "padding": true,
@@ -96,16 +130,26 @@
     }
   },
   "styles": {
+    "typography": {
+      "typography": {
+        "fontFamily": "var(--wp--preset--font-family--crimson-pro)"
+      },
     "color": {
       "background": "#ffffff",
       "text": "#000000"
     },
     "elements": {
+      "h1": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--libre-franklin)"
+        }
+      },
       "heading": {
         "color": {
           "text": "var(--wp--preset--color--dark)"
         }
       }
+    }
     }
   }
 }
