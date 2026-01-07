@@ -5,9 +5,83 @@
     "typography": {
       "fontFamilies": [
         {
+          "fontFamily": "\"Libre Franklin\", sans-serif",
+          "name": "body",
+          "slug": "body",
+          "fontFace": [
+            {
+              "fontFamily": "Libre-Franklin",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/libre-franklin-v12-latin-regular.woff2",
+                "file:./assets/fonts/libre-franklin-v12-latin-regular.woff"
+              ]
+            },
+            {
+              "fontFamily": "Libre-Franklin",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/libre-franklin-v12-latin-700.woff2",
+                "file:./assets/fonts/libre-franklin-v12-latin-700.woff"
+              ]
+            },
+            {
+              "fontFamily": "Libre-Franklin",
+              "fontWeight": "400",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/libre-franklin-v12-latin-italic.woff2",
+                "file:./assets/fonts/libre-franklin-v12-latin-italic.woff"
+              ]
+            },
+            {
+              "fontFamily": "Libre-Franklin",
+              "fontWeight": "700",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/libre-franklin-v12-latin-700italic.woff2",
+                "file:./assets/fonts/libre-franklin-v12-latin-700italic.woff"
+              ]
+            }
+          ]
+        },
+        {
+          "fontFamily": "\"Cousine\", monospace",
+          "name": "code",
+          "slug": "code",
+          "fontFace": [
+            {
+              "fontFamily": "Cousine",
+              "fontWeight": "400",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/cousine-v14-latin-regular.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Cousine",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/cousine-v14-latin-700.woff2"
+              ]
+            },
+            {
+              "fontFamily": "Cousine",
+              "fontWeight": "400",
+              "fontStyle": "italic",
+              "src": [
+                "file:./assets/fonts/cousine-v14-latin-italic.woff2"
+              ]
+            }
+          ]
+        },
+        {
           "fontFamily": "\"Crimson Pro\", serif",
-          "name": "Crimson Pro",
-          "slug": "crimson-pro",
+          "name": "heading",
+          "slug": "heading",
           "fontFace": [
             {
               "fontFamily": "Crimson Pro",
@@ -34,13 +108,43 @@
               ]
             }
           ]
-        }]
+        },
+        {
+          "fontFamily": "\"Dancing Script\", cursive",
+          "name": "handwritten",
+          "slug": "handwritten",
+          "fontFace": [
+            {
+              "fontFamily": "Dancing Script",
+              "fontWeight": "700",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/dancing-script-v23-latin-700.woff2",
+                "file:./assets/fonts/dancing-script-v23-latin-700.woff"
+              ]
+            },
+            {
+              "fontFamily": "Dancing Script",
+              "fontWeight": "500",
+              "fontStyle": "normal",
+              "src": [
+                "file:./assets/fonts/dancing-script-v23-latin-500.woff2",
+                "file:./assets/fonts/dancing-script-v23-latin-500.woff"
+              ]
+            }
+          ]
+        }
+      ]
     },
     "spacing": {
       "margin": true,
       "padding": true,
       "units": [
-        "px", "rem", "vh", "vw", "%"
+        "px",
+        "rem",
+        "vh",
+        "vw",
+        "%"
       ],
       "blockGap": true
     },
@@ -131,25 +235,55 @@
   },
   "styles": {
     "typography": {
-      "typography": {
-        "fontFamily": "var(--wp--preset--font-family--crimson-pro)"
-      },
+      "fontFamily": "var(--wp--preset--font-family--body)"
+    },
     "color": {
-      "background": "#ffffff",
-      "text": "#000000"
+      "background": "var(--wp--preset--color--dark)",
+      "text": "var(--wp--preset--color--light)"
     },
     "elements": {
-      "h1": {
+      "heading": {
         "typography": {
-          "fontFamily": "var(--wp--preset--font-family--libre-franklin)"
+          "fontFamily": "var(--wp--preset--font-family--heading)"
+        },
+        "color": {
+          "text": "var(--wp--preset--color--light)"
         }
       },
-      "heading": {
+      "h1": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--handwritten)",
+          "fontWeight": "700"
+        }
+      },
+      "link": {
         "color": {
-          "text": "var(--wp--preset--color--dark)"
+          "text": "var(--wp--preset--color--ternary)"
+        }
+      },
+      "button": {
+        "typography": {
+          "fontWeight": "700"
+        },
+        "color": {
+          "background": "var(--wp--preset--color--primary)",
+          "text": "var(--wp--preset--color--light-grey)"
         }
       }
-    }
+    },
+    "blocks": {
+      "core/verse": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--handwritten)",
+          "fontWeight": "500"
+        }
+      },
+      "core/code": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--code)",
+          "fontWeight": "500"
+        }
+      }
     }
   }
 }
