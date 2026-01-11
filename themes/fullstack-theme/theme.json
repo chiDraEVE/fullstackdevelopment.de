@@ -230,6 +230,23 @@
           "name": "Dark Grey ~ Dark Night",
           "slug": "dark-grey"
         }
+      ],
+      "gradients": [
+        {
+          "slug": "primary-overlay",
+          "name": "Primary Overlay",
+          "gradient": "linear-gradient(180deg, var(--wp--preset--color--primary) 0%, var(--wp--preset--color--primary-dark) 100%)"
+        },
+        {
+          "slug": "hero-video",
+          "name": "Hero Video Overlay",
+          "gradient": "linear-gradient(180deg, rgba(18,21,23,0.0) 0%, var(--wp--preset--color--dark) 90%)"
+        },
+        {
+          "slug": "secondary-soft",
+          "name": "Secondary Soft",
+          "gradient": "linear-gradient(135deg, var(--wp--preset--color--secondary-light), var(--wp--preset--color--secondary))"
+        }
       ]
     }
   },
