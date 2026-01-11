@@ -15,10 +15,10 @@ plugins/*
 !plugins/bookstore-block
 !plugins/copyright-date-block
 !plugins/featured-professor
+!plugins/fullstack-multisite-navigation
 !plugins/fullstackdevelopment-post-types.php
 !plugins/interactivity-quiz
 !plugins/my-first-gutenberg-app
-!plugins/my-nav
 !plugins/my-reading-list
 !plugins/new-database-table
 !plugins/our-first-unique-plugin
