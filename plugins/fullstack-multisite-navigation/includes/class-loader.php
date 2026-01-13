@@ -6,9 +6,11 @@ class FSD_Nav_Loader {
         require_once FSD_NAV_PLUGIN_DIR . 'includes/class-navigation-service.php';
         require_once FSD_NAV_PLUGIN_DIR . 'includes/class-hooks-frontend.php';
         require_once FSD_NAV_PLUGIN_DIR . 'includes/class-hooks-sync.php';
+        require_once FSD_NAV_PLUGIN_DIR . 'includes/class-hooks-admin.php';
 
         FSD_Nav_Hooks_Frontend::register();
         FSD_Nav_Hooks_Sync::register();
+        FSD_Nav_Hooks_Admin::register();
     }
 
     public static function activate( $network_wide ) {

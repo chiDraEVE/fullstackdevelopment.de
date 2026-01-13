@@ -1,8 +1,8 @@
 <?php
 class FSD_Nav_Hooks_Frontend {
     public static function register() {
-        add_action( 'wp_head', [ __CLASS__, 'output_header_nav' ] );
-        add_action( 'wp_footer', [ __CLASS__, 'output_footer_nav' ] );
+        add_action( 'wp_body_open', [ __CLASS__, 'output_header_nav' ] );
+        add_action( 'wp_footer', [ __CLASS__, 'output_footer_nav' ], 5 );
     }
 
     public static function output_header_nav() {

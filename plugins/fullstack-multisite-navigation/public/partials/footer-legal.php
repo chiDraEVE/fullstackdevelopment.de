@@ -5,9 +5,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $tree = isset( $tree ) ? $tree : FSD_Nav_Navigation_Service::get_navigation_tree( 'footer' );
 
-if ( empty( $tree ) ) {
+/*if ( empty( $tree ) ) {
     return;
-}
+}*/
 
 echo '<nav class="fsd-footer-legal" aria-label="Rechtliches">';
 echo '<ul class="fsd-footer-legal__list">';

@@ -4,7 +4,7 @@
  * Description: Globale Navigation und Footer für Multisite.
  * Network: true
  * Version: 0.1.0
- * Author: Du
+ * Author: chidraeve
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
