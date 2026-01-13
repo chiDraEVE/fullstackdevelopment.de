@@ -1,5 +1,11 @@
 <?php
-	
+/*
+  Plugin Name: Fullstackdevelopment Post Types
+  Version: 1.0
+  Author: chidraeve
+  Author URI: https://fullstackdevelopment.de
+*/
+
 	add_action('init', 'fullstackdevelopment_post_types');
 	
 	function fullstackdevelopment_post_types() {
