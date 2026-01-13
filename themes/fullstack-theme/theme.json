@@ -65,15 +65,15 @@
               "fontWeight": "700",
               "fontStyle": "normal",
               "src": [
-                "file:./assets/fonts/cousine-v14-latin-700.woff2"
+                "file:./assets/fonts/cousine-v25-latin-700.woff2"
               ]
             },
             {
               "fontFamily": "Cousine",
               "fontWeight": "400",
-              "fontStyle": "italic",
+              "fontStyle": "normal",
               "src": [
-                "file:./assets/fonts/cousine-v14-latin-italic.woff2"
+                "file:./assets/fonts/cousine-v25-latin-regular.woff2"
               ]
             }
           ]
