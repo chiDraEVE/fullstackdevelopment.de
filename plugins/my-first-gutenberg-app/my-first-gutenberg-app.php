@@ -1,7 +1,8 @@
 <?php
 /**
  * Plugin Name: My first Gutenberg App
- *
+ * Plugin Dexcription: A simple Gutenberg app integrated into the WordPress admin from the course about wp data layer. Added a custom feature to detect the environment type.
+ * Version: 1.0.0
  */
 
 defined('ABSPATH') || exit;
