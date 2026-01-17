@@ -15,6 +15,7 @@ plugins/*
 !plugins/bookstore-block
 !plugins/copyright-date-block
 !plugins/featured-professor
+!plugins/fullstack-blocks
 !plugins/fullstack-multisite-navigation
 !plugins/fullstackdevelopment-post-types.php
 !plugins/interactivity-quiz
