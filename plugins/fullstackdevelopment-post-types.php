@@ -20,7 +20,8 @@
 				'excerpt',
 				'comments',
 				'revision'
-			)
+			),
+            'show_in_rest' => true
 		);
 		
 		$sourceArguments = array(

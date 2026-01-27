@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "fullstack-blocks/author-card",
+	"version": "0.1.0",
+	"title": "Author Card",
+	"category": "fullstack-blocks",
+	"icon": "businessperson",
+	"description": "Karte für Author mit Projekten/Quellen.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true
+		},
+		"align": ["wide"]
+	},
+	"attributes": {
+		"layout": {
+			"type": "string",
+			"default": "card"
+		}
+	},
+	"usesContext": ["postId", "postType"],
+	"textdomain": "fullstack-blocks",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js",
+	"render": "file:./render.php"
+}

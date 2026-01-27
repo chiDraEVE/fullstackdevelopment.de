@@ -1,0 +1,31 @@
+.fsd-author-card {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.fsd-author-card--full {
+	max-width: 800px;
+}
+
+.author-avatar img {
+	border-radius: 50%;
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+}
+
+.author-projects ul {
+	list-style: none;
+	padding: 0;
+}
+
+.author-projects a {
+	text-decoration: none;
+	color: #0073aa;
+}
+
+.author-projects a:hover {
+	text-decoration: underline;
+}

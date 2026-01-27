@@ -1,9 +1,43 @@
-<!-- wp:template-part {"slug":"header","theme":"fullstack-theme","area":"uncategorized"} /-->
+<!-- wp:template-part {"slug":"header","area":"uncategorized"} /-->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"width":"50%"} -->
+<div class="wp-block-column" style="flex-basis:50%"><!-- wp:group {"layout":{"type":"constrained","contentSize":"20vw","justifyContent":"left"}} -->
+<div class="wp-block-group"><!-- wp:heading -->
+<h2 class="wp-block-heading">Eine Überschrift</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p><strong>Lorem </strong>ipsum dolor sit <em>amet</em>, <strong><em>consectetur </em></strong>adipiscing elit.<br>Inline Code: <code>npm run build</code></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button {"backgroundColor":"primary"} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-primary-background-color has-background wp-element-button">Test-Button</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"50%"} -->
+<div class="wp-block-column" style="flex-basis:50%"><!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Code-Beispiel</h3>
+<!-- /wp:heading -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>function test() {
+  console.log("Hello World");
+}</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:verse {"fontFamily":"dancing script"} -->
+<pre class="wp-block-verse has-dancing-script-font-family">Ist Vers sowas wie ein Zitat und wird mit &lt;cite&gt; geschrieben?</pre>
+<!-- /wp:verse --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
 
 <!-- wp:group -->
-<div class="wp-block-group"><!-- wp:post-title /-->
-
-    <!-- wp:post-content /--></div>
+<div class="wp-block-group"><!-- wp:post-content /--></div>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer","theme":"fullstack-theme","area":"uncategorized"} /-->
+<!-- wp:template-part {"slug":"footer","area":"uncategorized"} /-->
