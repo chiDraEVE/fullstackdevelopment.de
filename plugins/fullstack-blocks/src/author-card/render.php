@@ -1,6 +1,6 @@
 <?php
 
-$post_id = $block->context['postId'] ?? get_the_ID();
+$post_id = get_the_ID();
 $layout  = $attributes['layout'] ?? 'card';
 
 if ( ! $post_id || get_post_type( $post_id ) !== 'author' ) {
@@ -12,7 +12,7 @@ $projects = get_posts([
 	'posts_per_page' => -1,
 	'post_status' => 'publish',
 	'meta_query' => [[
-		'key' => 'course_author',
+		'key' => 'author',
 		'value' => (string) $post_id,
 		'compare' => '='
 	]]
@@ -23,7 +23,7 @@ $sources = get_posts([
 	'posts_per_page' => -1,
 	'post_status' => 'publish',
 	'meta_query' => [[
-		'key' => 'course_author',
+		'key' => 'author',
 		'value' => (string) $post_id,
 		'compare' => '='
 	]]
@@ -41,7 +41,11 @@ $sources = get_posts([
 ?>
 <p <?php echo get_block_wrapper_attributes(); ?>>
 	<?php
-		esc_html_e( 'Render Block von Author Card – hello from a dynamic block!', 'fullstack-blocks' );
+	if ( ! $post_id && isset( $block->context['postId'] ) ) {
+		$post_id = $block->context['postId'];
+	}
+
+	esc_html_e( 'Render Block von Author Card – hello from a dynamic block!', 'fullstack-blocks' );
 	print('<p>' . $post_id) . ' Layout: ' . $layout . '</p>';
 	var_dump($projects);
 	var_dump($sources);

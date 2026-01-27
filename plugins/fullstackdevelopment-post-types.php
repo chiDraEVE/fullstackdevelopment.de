@@ -56,21 +56,21 @@
 		
 		register_post_type( 'project', array_merge($common, $projectArguments) );
 		
-		$authorArguments = array(
-			'label' => 'author',
-			'rewrite' => array( 'slug' => 'author'),
+		$instructorArguments = array(
+			'label' => 'instrctor',
+			'rewrite' => array( 'slug' => 'instructor'),
 			'menu_icon' => 'dashicons-id',
 			'labels' => array(
-				'name' => 'Authoren',
-				'add_new_item' => 'Neuen Author anlegen',
-				'edit_item' => 'Author bearbeiten',
-				'all_items' => 'Alle Authoren',
-				'singular_name' => 'Author'
+				'name' => 'Dozenten',
+				'add_new_item' => 'Neuen Dozenten anlegen',
+				'edit_item' => 'Dozent bearbeiten',
+				'all_items' => 'Alle Dozenten',
+				'singular_name' => 'Dozent'
 			),
 			'menu_position' => 50
 		);
 		
-		register_post_type( 'author', array_merge($common, $authorArguments) );
+		register_post_type( 'instructor', array_merge($common, $instructorArguments) );
 	}
 	
 	add_action('init', 'fullstackdevelopment_taxonomies');
