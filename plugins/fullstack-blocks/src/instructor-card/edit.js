@@ -22,7 +22,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
 			<div { ...useBlockProps() }>
 				<div className="fsd-author-card__placeholder">
-					<strong>Author Card</strong>
+					<strong>Instructor Card</strong>
 					<div>Platzhalter im Editor (Frontend wird per PHP gerendert)</div>
 					<div>Layout: { layout }</div>
 				</div>

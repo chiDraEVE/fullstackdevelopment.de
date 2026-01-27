@@ -57,7 +57,7 @@
 		register_post_type( 'project', array_merge($common, $projectArguments) );
 		
 		$instructorArguments = array(
-			'label' => 'instrctor',
+			'label' => 'instructor',
 			'rewrite' => array( 'slug' => 'instructor'),
 			'menu_icon' => 'dashicons-id',
 			'labels' => array(

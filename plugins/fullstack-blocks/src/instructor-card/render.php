@@ -3,8 +3,8 @@
 $post_id = get_the_ID();
 $layout  = $attributes['layout'] ?? 'card';
 
-if ( ! $post_id || get_post_type( $post_id ) !== 'author' ) {
-	return '<div class="fsd-author-card">Author Card: außerhalb eines Author-Posts.</div>';
+if ( ! $post_id || get_post_type( $post_id ) !== 'instructor' ) {
+	return '<div class="fsd-instructor-card">Author Card: außerhalb eines Dozenten-Posts.</div>';
 }
 
 $projects = get_posts([
@@ -12,7 +12,7 @@ $projects = get_posts([
 	'posts_per_page' => -1,
 	'post_status' => 'publish',
 	'meta_query' => [[
-		'key' => 'author',
+		'key' => 'instructor',
 		'value' => (string) $post_id,
 		'compare' => '='
 	]]
@@ -23,7 +23,7 @@ $sources = get_posts([
 	'posts_per_page' => -1,
 	'post_status' => 'publish',
 	'meta_query' => [[
-		'key' => 'author',
+		'key' => 'instructor',
 		'value' => (string) $post_id,
 		'compare' => '='
 	]]
@@ -45,7 +45,7 @@ $sources = get_posts([
 		$post_id = $block->context['postId'];
 	}
 
-	esc_html_e( 'Render Block von Author Card – hello from a dynamic block!', 'fullstack-blocks' );
+	esc_html_e( 'Render Block von Instructor Card – hello from a dynamic block!', 'fullstack-blocks' );
 	print('<p>' . $post_id) . ' Layout: ' . $layout . '</p>';
 	var_dump($projects);
 	var_dump($sources);

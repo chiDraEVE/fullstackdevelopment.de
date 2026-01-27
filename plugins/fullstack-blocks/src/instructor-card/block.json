@@ -1,12 +1,12 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "fullstack-blocks/author-card",
+	"name": "fullstack-blocks/instructor-card",
 	"version": "0.1.0",
-	"title": "Author Card",
+	"title": "Instructor Card",
 	"category": "fullstack-blocks",
 	"icon": "businessperson",
-	"description": "Karte für Author mit Projekten/Quellen.",
+	"description": "Karte für Dozenten mit Projekten/Quellen.",
 	"example": {},
 	"supports": {
 		"html": false,
