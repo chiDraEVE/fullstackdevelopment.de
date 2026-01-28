@@ -3,6 +3,7 @@
 !.gitignore
 !README.md
 !index.php
+!acf-import.json
 
 !bin/
 

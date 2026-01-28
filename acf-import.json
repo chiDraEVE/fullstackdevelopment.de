@@ -1,0 +1,411 @@
+[
+    {
+        "key": "group_fsd_relationships",
+        "title": "Beziehungen Author zu Quelle und Projekt",
+        "fields": [
+            {
+                "key": "field_fsd_course_author",
+                "label": "instructor",
+                "name": "instructor",
+                "aria-label": "",
+                "type": "post_object",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "instructor"
+                ],
+                "post_status": "",
+                "taxonomy": "",
+                "return_format": "object",
+                "multiple": 0,
+                "allow_null": 0,
+                "allow_in_bindings": 1,
+                "bidirectional": 0,
+                "ui": 1,
+                "bidirectional_target": []
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "project"
+                }
+            ],
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "source"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_6967f52bbdc08",
+        "title": "Blog-Posts-Felder zur Zuordnung",
+        "fields": [
+            {
+                "key": "field_6967f52cb2913",
+                "label": "Worüber gepostet wurde",
+                "name": "post_about_this",
+                "aria-label": "",
+                "type": "relationship",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "project",
+                    "author",
+                    "source",
+                    "post",
+                    "book",
+                    "page"
+                ],
+                "post_status": "",
+                "taxonomy": "",
+                "filters": [
+                    "search",
+                    "post_type",
+                    "taxonomy"
+                ],
+                "return_format": "object",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "elements": "",
+                "bidirectional": 0,
+                "bidirectional_target": []
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "post"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_6967d4d377eda",
+        "title": "Dozenten-Felder",
+        "fields": [
+            {
+                "key": "field_6967db4854ceb",
+                "label": "Berufsbezeichnung",
+                "name": "berufsbezeichnung",
+                "aria-label": "",
+                "type": "text",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "maxlength": "",
+                "allow_in_bindings": 0,
+                "placeholder": "",
+                "prepend": "",
+                "append": ""
+            },
+            {
+                "key": "field_6967d4d31e5c1",
+                "label": "Homepage",
+                "name": "homepage",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6967d5221e5c2",
+                "label": "GitHub",
+                "name": "github",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6967d6161e5c3",
+                "label": "YouTube",
+                "name": "youtube",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6967d6651e5c4",
+                "label": "twitter",
+                "name": "twitter",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6967d69b1e5c5",
+                "label": "Instagram",
+                "name": "instagram",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            },
+            {
+                "key": "field_6967d6a81e5c6",
+                "label": "Facebook",
+                "name": "facebook",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "instructor"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_6967d880eb806",
+        "title": "Projekt-Felder",
+        "fields": [
+            {
+                "key": "field_6967d882fef6c",
+                "label": "Link",
+                "name": "link",
+                "aria-label": "",
+                "type": "link",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_6967d928c4028",
+                "label": "Folgeprojekt",
+                "name": "folgeprojekt",
+                "aria-label": "",
+                "type": "link",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "return_format": "array",
+                "allow_in_bindings": 0
+            },
+            {
+                "key": "field_696a9da3006e9",
+                "label": "Quelle",
+                "name": "quelle",
+                "aria-label": "",
+                "type": "relationship",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "post_type": [
+                    "source"
+                ],
+                "post_status": "",
+                "taxonomy": "",
+                "filters": [
+                    "search",
+                    "post_type",
+                    "taxonomy"
+                ],
+                "return_format": "object",
+                "min": "",
+                "max": "",
+                "allow_in_bindings": 0,
+                "elements": "",
+                "bidirectional": 0,
+                "bidirectional_target": []
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "project"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    },
+    {
+        "key": "group_6967d75b3e7b0",
+        "title": "Quellen-Felder",
+        "fields": [
+            {
+                "key": "field_6967d75b55732",
+                "label": "Source-URL",
+                "name": "source-url",
+                "aria-label": "",
+                "type": "url",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "default_value": "",
+                "allow_in_bindings": 0,
+                "placeholder": ""
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "source"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "hide_on_screen": "",
+        "active": true,
+        "description": "",
+        "show_in_rest": 0,
+        "display_title": ""
+    }
+]
