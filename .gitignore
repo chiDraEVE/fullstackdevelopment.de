@@ -17,8 +17,6 @@ plugins/*
 !plugins/copyright-date-block
 !plugins/featured-professor
 !plugins/fullstack-blocks
-!plugins/fullstack-multisite-navigation
-!plugins/fullstackdevelopment-post-types.php
 !plugins/interactivity-quiz
 !plugins/my-first-gutenberg-app
 !plugins/my-reading-list
@@ -41,6 +39,8 @@ themes/*
 
 !mu-plugins
 mu-plugins/*
+!mu-plugins/fullstack-multisite-navigation
+!mu-plugins/fullstackdevelopment-post-types.php
 
 !oldsite
 
