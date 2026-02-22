@@ -1,6 +1,16 @@
 <?php
+
+/**
+ * Class FSD_Nav_Hooks_Sync
+ *
+ * Handles synchronization of navigation data for multisite environments,
+ * including setup for new sites and synchronization of custom post types.
+ */
 class FSD_Nav_Hooks_Sync {
 
+    /*
+     *
+     */
     public static function register() {
         // Neue Site in Multisite
         add_action( 'wp_insert_site', [ __CLASS__, 'on_new_site' ], 10, 1 );
@@ -48,37 +58,37 @@ class FSD_Nav_Hooks_Sync {
             return;
         }
 
-        global $wpdb;
-        $table = $wpdb->base_prefix . 'network_navigation';
-
-        $url   = get_permalink( $post_id );
-        $title = get_the_title( $post_id );
-
-        $existing_id = $wpdb->get_var(
-            $wpdb->prepare(
-                "SELECT id FROM $table WHERE type = %s AND slug = %s LIMIT 1",
-                'project',
-                $post->post_name
-            )
-        );
-
-        $data = array(
-            'parent_id'       => null,
-            'site_id'         => get_current_blog_id(),
-            'slug'            => $post->post_name,
-            'title'           => $title,
-            'url'             => $url,
-            'type'            => 'project',
-            'hierarchy_group' => 'main',
-            'sort_order'      => 0,
-            'is_active'       => ( $post->post_status === 'publish' ) ? 1 : 0,
-        );
-
-        if ( $existing_id ) {
-            $wpdb->update( $table, $data, array( 'id' => $existing_id ) );
-        } else {
-            $wpdb->insert( $table, $data );
-        }
+//        global $wpdb;
+//        $table = $wpdb->base_prefix . 'network_navigation';
+//
+//        $url   = get_permalink( $post_id );
+//        $title = get_the_title( $post_id );
+//
+//        $existing_id = $wpdb->get_var(
+//            $wpdb->prepare(
+//                "SELECT id FROM $table WHERE type = %s AND slug = %s LIMIT 1",
+//                'project',
+//                $post->post_name
+//            )
+//        );
+//
+//        $data = array(
+//            'parent_id'       => null,
+//            'site_id'         => get_current_blog_id(),
+//            'slug'            => $post->post_name,
+//            'title'           => $title,
+//            'url'             => $url,
+//            'type'            => 'project',
+//            'hierarchy_group' => 'main',
+//            'sort_order'      => 0,
+//            'is_active'       => ( $post->post_status === 'publish' ) ? 1 : 0,
+//        );
+//
+//        if ( $existing_id ) {
+//            $wpdb->update( $table, $data, array( 'id' => $existing_id ) );
+//        } else {
+//            $wpdb->insert( $table, $data );
+//        }
 
         FSD_Nav_Navigation_Service::clear_cache();
     }

@@ -15,11 +15,17 @@ class FSD_Nav_Loader {
 
     public static function activate( $network_wide ) {
         require_once FSD_NAV_PLUGIN_DIR . 'includes/class-db.php';
-        if ( is_multisite() && $network_wide ) {
-            // Tabelle nur einmal auf Netzwerk-Ebene mit base_prefix
-            FSD_Nav_DB::create_tables();
+        if ( is_multisite() ) {
+            if ( $network_wide ) {
+                // Netzwerk-Aktivierung: Tabellen einmalig mit base_prefix anlegen
+                FSD_Nav_DB::create_tables( true );
+            } else {
+                // Einzelne Seiten-Aktivierung in Multisite: abbrechen und Fehlermeldung zeigen
+                wp_die( esc_html__( 'Dieses Plugin muss netzwerkweit aktiviert werden. Bitte "Netzwerk aktivieren" wählen.', 'fsd-nav' ) );
+            }
         } else {
-            FSD_Nav_DB::create_tables();
+            // Single-Site: normale Anlage pro Site
+            FSD_Nav_DB::create_tables( false );
         }
     }
 }
