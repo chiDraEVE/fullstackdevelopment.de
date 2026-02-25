@@ -14,13 +14,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'FSD_NAV_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'FSD_NAV_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
-// Autoloader / Loader
-require_once FSD_NAV_PLUGIN_DIR . 'includes/class-loader.php';
-
-// Plugin starten
-add_action( 'plugins_loaded', [ 'FSD_Nav_Loader', 'init' ] );
-
-// Aktivierung: DB-Schema anlegen
+//// Autoloader / Loader
+//require_once FSD_NAV_PLUGIN_DIR . 'includes/class-loader.php';
+//
+//// Plugin starten
+//add_action( 'plugins_loaded', [ 'FSD_Nav_Loader', 'init' ] );
+//
+//// Aktivierung: DB-Schema anlegen
 register_activation_hook( __FILE__, [ 'FSD_Nav_Loader', 'activate' ] );
 
 add_action( 'wp_enqueue_scripts', function () {
