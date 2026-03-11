@@ -1,0 +1,19 @@
+/* Der Standard-Container für alle Blöcke im Block-Theme */
+.wp-site-blocks
+  display: flex
+  flex-direction: column
+  min-height: 100vh /* Nutzt die gesamte Viewport-Höhe */
+
+/* Nur wenn Admin-Bar sichtbar ist */
+body.admin-bar
+  .wp-site-blocks
+    min-height: calc(100vh - 32px) /* Desktop-Adminbar-Höhe */
+
+  @media (max-width: 782px)
+    .wp-site-blocks
+      min-height: calc(100vh - 46px) /* mobile Adminbar-Höhe */
+
+/* Drückt den Footer nach ganz unten */
+footer, .wp-block-template-part-footer
+  margin-top: auto
+

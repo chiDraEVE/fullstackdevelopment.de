@@ -302,5 +302,22 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--body)"
 		}
-	}
+	},
+	"templateParts": [
+		{
+			"area": "header",
+			"name": "header",
+			"title": "Mein Header"
+		},
+		{
+			"area": "header",
+			"name": "header-mit-video",
+			"title": "Mein Video-Header"
+		},
+		{
+			"area": "footer",
+			"name": "footer",
+			"title": "Mein Footer"
+		}
+	]
 }
